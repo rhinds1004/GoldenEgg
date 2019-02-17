@@ -564,6 +564,7 @@
 		<None Include="..\..\Source\GoldenEgg.Target.cs" />
 		<None Include="..\..\Source\GoldenEggEditor.Target.cs" />
 		<None Include="..\..\Config\DefaultEditor.ini" />
+		<None Include="..\..\Config\DefaultEditorSettings.ini" />
 		<None Include="..\..\Config\DefaultEngine.ini" />
 		<None Include="..\..\Config\DefaultGame.ini" />
 		<None Include="..\..\Config\DefaultInput.ini" />
