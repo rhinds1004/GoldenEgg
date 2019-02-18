@@ -8,7 +8,7 @@ AAvatar::AAvatar()
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
+	mouseSensitivity = 200.0f;
 }
 
 // Called when the game starts or when spawned
@@ -34,6 +34,8 @@ void AAvatar::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	PlayerInputComponent->BindAxis("StrafeLeft", this, &AAvatar::StrafeLeft);
 	PlayerInputComponent->BindAxis("Backward", this, &AAvatar::MoveBackward);
 	PlayerInputComponent->BindAxis("StrafeRight", this, &AAvatar::StrafeRight);
+	PlayerInputComponent->BindAxis("LookX", this, &AAvatar::LookX);
+	PlayerInputComponent->BindAxis("LookY", this, &AAvatar::LookY);
 
 }
 
@@ -68,5 +70,17 @@ void AAvatar::StrafeRight(float amt)
 	{
 		AddMovementInput(GetActorRightVector(), amt);
 	}
+}
+
+//Player view looks along X axis
+void AAvatar::LookX(float amt)
+{
+	AddControllerYawInput(mouseSensitivity * amt * GetWorld()->GetDeltaSeconds());
+}
+
+//Player view looks along Y axis
+void AAvatar::LookY(float amt)
+{
+	AddControllerPitchInput(mouseSensitivity * amt * GetWorld()->GetDeltaSeconds());
 }
 

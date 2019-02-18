@@ -34,5 +34,12 @@ public:
 	void MoveBackward(float amt);
 	UFUNCTION()
 	void StrafeRight(float amt);
+	UFUNCTION()
+		void LookX(float amt);
+	UFUNCTION()
+		void LookY(float amt);
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Mouse)
+		float mouseSensitivity;
 	
 };
