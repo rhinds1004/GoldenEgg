@@ -16,19 +16,22 @@ struct Message
 	FString message;
 	float time;
 	FColor color;
+	UTexture2D* tex;
 
 	//set default values
 	Message()
 	{
 		time = 5.f;
 		color = FColor::White;
+		tex = nullptr;
 	}
 
-	Message(FString iMessage, float iTime, FColor iColor)
+	Message(FString iMessage, float iTime, FColor iColor, UTexture2D* iTex)
 	{
 		message = iMessage;
 		time = iTime;
 		color = iColor;
+		tex = iTex;
 	}
 
 };

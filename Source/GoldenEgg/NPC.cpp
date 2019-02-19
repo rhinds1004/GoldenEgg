@@ -3,6 +3,7 @@
 #include "NPC.h"
 #include "Avatar.h"
 #include "MyHud.h"
+#include "Engine/Texture2D.h"
 
 
 // Sets default values
@@ -15,8 +16,9 @@ ANPC::ANPC(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitialize
 	ProxSphere->SetSphereRadius(32.0f);
 	//Code to make ANPC::Prox() run when this proximity sphere overlaps another actor
 	ProxSphere->OnComponentBeginOverlap.AddDynamic(this, &ANPC::Prox);
-	NPCMessage = "Hi, I am Owen"; //Default NPC message can be changed in blueprint
-
+	NPCMessage = "Hi, I am Jack"; //Default NPC message can be changed in blueprint
+	NPCName = "NPC Jack"; //Default NPC name can be changed in blueprint
+	
 
 }
 
@@ -53,7 +55,7 @@ int ANPC::Prox_Implementation(UPrimitiveComponent* OverlappedComponent, AActor* 
 	if(FPController)
 	{
 		AMyHUD* hud = Cast<AMyHUD>(FPController->GetHUD());
-		hud->addMessage(Message(NPCMessage, 5.f, FColor::White));
+		hud->addMessage(Message(NPCName + FString(": ") + NPCMessage, 5.f, FColor::White, NPCFace));
 	}
 //	UE_LOG(LogTemp, Warning, TEXT("Prox impl"));
 	return 0;
