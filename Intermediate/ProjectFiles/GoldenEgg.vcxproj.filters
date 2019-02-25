@@ -4,7 +4,7 @@
 	<ItemGroup>
 		<None Include="..\..\GoldenEgg.uproject" />
 		<Filter Include="Source">
-			<UniqueIdentifier>{CA7EF41E-2AE3-4B41-9C5E-F9D8671C8488}</UniqueIdentifier>
+			<UniqueIdentifier>{E0066978-4674-4954-9824-8A4C33935A55}</UniqueIdentifier>
 		</Filter>
 		<None Include="..\..\Source\GoldenEgg.Target.cs">
 			<Filter>Source</Filter>
@@ -13,7 +13,7 @@
 			<Filter>Source</Filter>
 		</None >
 		<Filter Include="Config">
-			<UniqueIdentifier>{79A31B52-4A22-4C2B-9225-C108F3F926A4}</UniqueIdentifier>
+			<UniqueIdentifier>{E70D83D6-1FD0-4026-8BBF-7B8131EFFC04}</UniqueIdentifier>
 		</Filter>
 		<None Include="..\..\Config\DefaultEditor.ini">
 			<Filter>Config</Filter>
@@ -31,7 +31,7 @@
 			<Filter>Config</Filter>
 		</None >
 		<Filter Include="Source\GoldenEgg">
-			<UniqueIdentifier>{9674A16A-1D65-4675-BF7D-FDDCABBD587D}</UniqueIdentifier>
+			<UniqueIdentifier>{51E19836-F900-46C5-BE87-A7336109D6C7}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="..\..\Source\GoldenEgg\Avatar.cpp">
 			<Filter>Source\GoldenEgg</Filter>
@@ -70,6 +70,12 @@
 			<Filter>Source\GoldenEgg</Filter>
 		</ClCompile >
 		<ClInclude Include="..\..\Source\GoldenEgg\NPC.h">
+			<Filter>Source\GoldenEgg</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\GoldenEgg\PickUpItem.cpp">
+			<Filter>Source\GoldenEgg</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\GoldenEgg\PickUpItem.h">
 			<Filter>Source\GoldenEgg</Filter>
 		</ClInclude >
 	</ItemGroup>

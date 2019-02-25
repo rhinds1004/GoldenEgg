@@ -6,6 +6,8 @@
 #include "GameFramework/Character.h"
 #include "Avatar.generated.h"
 
+class APickUpItem; // Forward declare the APickUpItem class since will be "mentioned" in a member function decl below
+
 UCLASS()
 class GOLDENEGG_API AAvatar : public ACharacter
 {
@@ -26,6 +28,24 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+/* Properties */
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Mouse)
+		float mouseSensitivity;
+
+	UPROPERTY()
+		TMap<FString, int> Backpack; //players inventory
+
+									 //Icons for the items in the backpack
+	UPROPERTY()
+		TMap<FString, UTexture2D*> Icons;
+
+	//Invetory being displayed currently?
+	bool inventoryShowing;
+
+	/* FUNCTIONS */
+
+	//Avatar Movement
 	UFUNCTION()
 	void MoveForward(float amt);
 	UFUNCTION()
@@ -39,7 +59,24 @@ public:
 	UFUNCTION()
 		void LookY(float amt);
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Mouse)
-		float mouseSensitivity;
+	//Avatar status
+	UFUNCTION()
+		float GetCurrentHp();
+	UFUNCTION()
+		float GetMaxHp();
+
+
+	//Avatar actions
+	UFUNCTION()
+		void PickUp(APickUpItem* Item);
+	UFUNCTION()
+		void ToggleInventory();
+
 	
+
+private:
+	UPROPERTY(VisibleAnywhere, Category = "NPC stats")
+		float maxHP;
+	UPROPERTY(VisibleAnywhere,  Category = "NPC stats")
+		float currentHP;
 };

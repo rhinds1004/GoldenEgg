@@ -6,7 +6,9 @@
 #include "Engine/Canvas.h"
 #include "Engine/Font.h"
 #include "Engine/Texture2D.h"
-
+#include "GameFramework/Character.h"
+#include "Kismet/GameplayStatics.h"
+#include "Avatar.h"
 
 
 void AMyHUD::DrawHUD()
@@ -17,7 +19,12 @@ void AMyHUD::DrawHUD()
 	canvasSizeX = Canvas->SizeX;
 	canvasSizeY = Canvas->SizeY;
 	drawMessages();
-
+	AAvatar* Avatar = Cast<AAvatar>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
+	DrawHpBar(Avatar->GetCurrentHp(), Avatar->GetMaxHp());
+	barMargin = 50.f;
+		barPad = 12.f;
+	barHeight = 50.f;
+		barWidth = 200.f;
 }
 
 void AMyHUD::addMessage(Message msg)
@@ -53,7 +60,7 @@ void AMyHUD::drawMessage(Message msg, int lineCount)
 
 	if (msg.tex != nullptr)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Trying to do texture"));
+		//UE_LOG(LogTemp, Warning, TEXT("Trying to do texture"));
 		DrawTexture(msg.tex, x, y, messageH, messageH, 0, 0, 1, 1);
 	}
 	//black backing
@@ -61,4 +68,18 @@ void AMyHUD::drawMessage(Message msg, int lineCount)
 
 	DrawText(msg.message, msg.color,  messageH + x + pad, y + pad, hudFont);
 
+}
+
+void AMyHUD::DrawHpBar(float currentHp, float maxHp)
+{
+	float x = 0.f; 
+	float percHp = currentHp / maxHp;
+
+	const FVector2D ViewportSize = FVector2D(GEngine->GameViewport->Viewport->GetSizeXY());
+	DrawRect(FLinearColor(0, 0, 0, 1), x, ( ViewportSize.Y - ViewportSize.Y / 4) - barHeight - barPad -
+		barMargin, barWidth + 2 * barPad, barHeight + 2 * barPad);
+	DrawRect(FLinearColor(1 - percHp, percHp, 0, 1), x, (ViewportSize.Y - ViewportSize.Y / 4) - barHeight - barMargin,
+		barWidth*percHp, barHeight);
+	//DrawRect(FLinearColor::Black, x, canvasSizeY - canvasSizeY / 4, Avatar->totalHP * 5, 50.f);
+	//	DrawRect(FLinearColor::Red, x, canvasSizeY - canvasSizeY/4, Avatar->currentHP * 5, 50.f);
 }

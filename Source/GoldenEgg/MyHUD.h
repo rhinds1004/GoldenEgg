@@ -46,7 +46,14 @@ public:
 	TArray<Message> messages;
 	float canvasSizeX = 0.f;
 	float canvasSizeY = 0.f;
-
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = HUDSettings)
+		float barWidth;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = HUDSettings)
+		float barHeight; 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = HUDSettings)
+		float barPad;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = HUDSettings)
+	 float barMargin;
 
 	virtual void DrawHUD() override;
 	
@@ -56,5 +63,7 @@ public:
 
 
 	void drawMessage(Message msg, int lineCount);
+
+	void DrawHpBar(float currentHP, float maxHp);
 	
 };

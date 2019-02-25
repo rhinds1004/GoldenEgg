@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Avatar.h"
+#include "Engine/Engine.h"
 
 
 // Sets default values
@@ -9,6 +10,8 @@ AAvatar::AAvatar()
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 	mouseSensitivity = 200.0f;
+	maxHP = 100.0f;
+	currentHP = 100.0f;
 }
 
 // Called when the game starts or when spawned
@@ -36,6 +39,7 @@ void AAvatar::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	PlayerInputComponent->BindAxis("StrafeRight", this, &AAvatar::StrafeRight);
 	PlayerInputComponent->BindAxis("LookX", this, &AAvatar::LookX);
 	PlayerInputComponent->BindAxis("LookY", this, &AAvatar::LookY);
+	PlayerInputComponent->BindAction("Inventory", IE_Pressed, this, &AAvatar::ToggleInventory);
 
 }
 
@@ -82,5 +86,28 @@ void AAvatar::LookX(float amt)
 void AAvatar::LookY(float amt)
 {
 	AddControllerPitchInput(mouseSensitivity * amt * GetWorld()->GetDeltaSeconds());
+}
+
+float AAvatar::GetCurrentHp()
+{
+	
+	return currentHP;
+}
+
+float AAvatar::GetMaxHp()
+{
+	return maxHP;
+}
+
+void AAvatar::PickUp(APickUpItem * Item)
+{
+}
+
+void AAvatar::ToggleInventory()
+{
+	if (GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "Showing Inventory...");
+	}
 }
 
