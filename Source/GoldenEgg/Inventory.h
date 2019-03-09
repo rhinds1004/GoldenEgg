@@ -24,6 +24,7 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
-		
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Inventory)
+		TMap<FString, int> Backpack; //players inventory	
 	
 };

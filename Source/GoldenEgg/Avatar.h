@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "Inventory.h"
+//#include "PickUpItem.h"
 #include "Avatar.generated.h"
 
 class APickUpItem; // Forward declare the APickUpItem class since will be "mentioned" in a member function decl below
@@ -15,7 +17,7 @@ class GOLDENEGG_API AAvatar : public ACharacter
 
 public:
 	// Sets default values for this character's properties
-	AAvatar();
+	AAvatar(const FObjectInitializer& ObjectInitializer);
 
 protected:
 	// Called when the game starts or when spawned
@@ -34,7 +36,8 @@ public:
 		float mouseSensitivity;
 
 	UPROPERTY()
-		TMap<FString, int> Backpack; //players inventory
+		UInventory* backpack;
+
 
 									 //Icons for the items in the backpack
 	UPROPERTY()
@@ -79,4 +82,7 @@ private:
 		float maxHP;
 	UPROPERTY(VisibleAnywhere,  Category = "NPC stats")
 		float currentHP;
+
+	
+
 };

@@ -2,23 +2,29 @@
 
 #include "Avatar.h"
 #include "Engine/Engine.h"
+//#include "Inventory.h"
+#include "PickUpItem.h"
 
 
 // Sets default values
-AAvatar::AAvatar()
+AAvatar::AAvatar(const FObjectInitializer& ObjectInitializer)
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 	mouseSensitivity = 200.0f;
 	maxHP = 100.0f;
 	currentHP = 100.0f;
+
+	//ObjectInitializer.CreateDefaultSubobject<UInventory>(this, TEXT("Storage"));
+	backpack = CreateDefaultSubobject<UInventory>( TEXT("Storage"));
+	
 }
 
 // Called when the game starts or when spawned
 void AAvatar::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 }
 
 // Called every frame
@@ -99,15 +105,40 @@ float AAvatar::GetMaxHp()
 	return maxHP;
 }
 
-void AAvatar::PickUp(APickUpItem * Item)
+//add the item to the players inventory
+void AAvatar::PickUp(APickUpItem* item)
 {
+	//FString temp = FString::FromInt(backpack->Backpack.Num());
+
+	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, item->Name);
+	//backpack->Backpack.Add(FString("test"), 2);
+	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::FromInt( backpack->Backpack.Num()));
+	
+	if(backpack->Backpack.Find(item->Name))
+	{
+		backpack->Backpack[item->Name] += item->Quantity;
+	}
+	else
+	{
+		backpack->Backpack.Add(item->Name, item->Quantity);
+	}
+	
+
 }
 
 void AAvatar::ToggleInventory()
 {
 	if (GEngine)
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "Showing Inventory...");
+		
+		FString temp = FString::FromInt(backpack->Backpack.Num());
+
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, temp);
+
+
+
+
+	
 	}
 }
 
