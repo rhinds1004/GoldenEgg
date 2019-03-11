@@ -131,6 +131,7 @@ void AAvatar::PickUp(APickUpItem* item)
 	}
 }
 
+/*Toggles if the player's inventory is to be displayed or not. */
 void AAvatar::ToggleInventory()
 {
 	if (GEngine)

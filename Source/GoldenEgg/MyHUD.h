@@ -73,10 +73,7 @@ public:
 	TArray<Message> messages;
 	//Holds array of widget structs
 	TArray<Widget> widgets;
-	//holds screen dimensions
-	FVector2D dims;
-	float canvasSizeX = 0.f;
-	float canvasSizeY = 0.f;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = HUDSettings)
 		float barWidth;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = HUDSettings)
@@ -103,5 +100,6 @@ public:
 	UFUNCTION()
 	void DrawWidgets();
 
-	 FVector2D ViewportSize;
+	//holds screen dimensions
+	FVector2D ViewportSize;
 };

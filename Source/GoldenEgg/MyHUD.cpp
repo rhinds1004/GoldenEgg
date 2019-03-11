@@ -15,14 +15,7 @@ void AMyHUD::DrawHUD()
 {
 
 	Super::DrawHUD();
-
-	canvasSizeX = Canvas->SizeX;
-	canvasSizeY = Canvas->SizeY;
-	// dims only exist here in stock variable Canvas 
-	// Update them so use in addWidget() 
-	
-	//dims.X = ViewportSize.X;
-	//dims.Y = ViewportSize.Y;
+	// Viewport x and y can only be gotten in DrawHUD function.
 	ViewportSize = FVector2D(GEngine->GameViewport->Viewport->GetSizeXY());
 	DrawMessages();
 	DrawWidgets();
@@ -71,7 +64,7 @@ void AMyHUD::drawMessage(Message msg, int lineCount)
 		DrawTexture(msg.tex, x, y, messageH, messageH, 0, 0, 1, 1);
 	}
 	//black backing
-	DrawRect(FLinearColor::Black, messageH + x, y, canvasSizeX, messageH);
+	DrawRect(FLinearColor::Black, messageH + x, y, ViewportSize.X, messageH);
 
 	DrawText(msg.message, msg.color,  messageH + x + pad, y + pad, hudFont);
 
