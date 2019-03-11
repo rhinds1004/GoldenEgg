@@ -57,6 +57,7 @@ int32 UInventory::itemQuantity(FString itemName)
 	return -1;
 }
 
+/*Gives count of items in the inventory. Does not give the total amount of items in the inventory.*/
 int32 UInventory::numberOfSlotsUsed()
 {
 	return inventory.Num();

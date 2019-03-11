@@ -107,10 +107,7 @@ float AAvatar::GetMaxHp()
 	return maxHP;
 }
 
-/*Add the item to the players inventory. If item is picked up while the players inventory screen is open,
-* a call to the player's hud is made and the newly picked up item will be displayed within the inventory
-* screen.
-*/
+//add the item to the players inventory
 void AAvatar::PickUp(APickUpItem* item)
 {
 	

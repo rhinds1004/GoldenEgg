@@ -94,6 +94,7 @@ public:
 
 
 	void drawMessage(Message msg, int lineCount);
+	
 	void addWidget(Widget widget);
 	void clearWidgets();
 
