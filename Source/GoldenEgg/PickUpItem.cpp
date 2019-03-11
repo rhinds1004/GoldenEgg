@@ -53,14 +53,14 @@ int APickUpItem::Prox_Implementation(UPrimitiveComponent * OverlappedComponent, 
 	{
 		return -1;
 	}
-	//gets the first player controller
-	//AAvatar* avatar = Cast<AAvatar>(UGameplayStatics::GetPlayerController(GetWorld(), 0));
-	AAvatar* avatar = Cast<AAvatar>(GetWorld()->GetFirstPlayerController()->GetCharacter());
+	//gets the first player character
+	AAvatar* avatar = Cast<AAvatar>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
+
 	//Let player pickup this item
 	avatar->PickUp(this);
 	//get the hud for the first player controller
 	AMyHUD* hud = Cast<AMyHUD>(GetWorld()->GetFirstPlayerController()->GetHUD());
-	//hud->addMessage(Message(FString("Picked up: ") + FString::FromInt(Quantity) + FString(" ") + Name, 5.f, FColor::White, Icon));
+	hud->AddMessage(Message(FString("Picked up: ") + FString::FromInt(Quantity) + FString(" ") + Name, 5.f, FColor::White, Icon));
 	
 	Destroy();
 

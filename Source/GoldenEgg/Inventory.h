@@ -6,6 +6,7 @@
 #include "Components/ActorComponent.h"
 #include "Inventory.generated.h"
 
+class APickUpItem; // Forward declare the APickUpItem class since will be "mentioned" in a member function decl below
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class GOLDENEGG_API UInventory : public UActorComponent
@@ -18,13 +19,24 @@ public:
 
 protected:
 	// Called when the game starts
-	virtual void BeginPlay() override;
+	//virtual void BeginPlay() override;
 
 public:	
 	// Called every frame
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+	//virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Inventory)
-		TMap<FString, int> Backpack; //players inventory	
-	
+	void AddInventoryItem(APickUpItem* item);
+	//void GetInventoryItem(FString name);
+	int32 itemQuantity(FString itemName);
+	int32 numberOfSlotsUsed();
+	void DisplayInventory();
+	//Invetory being displayed currently?
+	bool inventoryShowing;
+	TMap<FString, APickUpItem*>::TIterator CreateIterator();
+
+
+private:
+	UPROPERTY(VisibleAnywhere, Category = Inventory)
+		TMap<FString, APickUpItem*> inventory; //players inventory	
+											 
 };

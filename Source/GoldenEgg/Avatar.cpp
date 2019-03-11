@@ -3,6 +3,7 @@
 #include "Avatar.h"
 #include "Engine/Engine.h"
 //#include "Inventory.h"
+#include "MyHUD.h"
 #include "PickUpItem.h"
 
 
@@ -16,8 +17,9 @@ AAvatar::AAvatar(const FObjectInitializer& ObjectInitializer)
 	currentHP = 100.0f;
 
 	//ObjectInitializer.CreateDefaultSubobject<UInventory>(this, TEXT("Storage"));
-	backpack = CreateDefaultSubobject<UInventory>( TEXT("Storage"));
+	myInventory = CreateDefaultSubobject<UInventory>( TEXT("Storage"));
 	
+	//AddOwnedComponent(CreateDefaultSubobject<UInventory>(this, TEXT("Storage")));
 }
 
 // Called when the game starts or when spawned
@@ -108,20 +110,8 @@ float AAvatar::GetMaxHp()
 //add the item to the players inventory
 void AAvatar::PickUp(APickUpItem* item)
 {
-	//FString temp = FString::FromInt(backpack->Backpack.Num());
-
-	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, item->Name);
-	//backpack->Backpack.Add(FString("test"), 2);
-	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::FromInt( backpack->Backpack.Num()));
 	
-	if(backpack->Backpack.Find(item->Name))
-	{
-		backpack->Backpack[item->Name] += item->Quantity;
-	}
-	else
-	{
-		backpack->Backpack.Add(item->Name, item->Quantity);
-	}
+	myInventory->AddInventoryItem(item);
 	
 
 }
@@ -131,11 +121,34 @@ void AAvatar::ToggleInventory()
 	if (GEngine)
 	{
 		
-		FString temp = FString::FromInt(backpack->Backpack.Num());
+		// Get the controller & hud 
+		APlayerController* PController = GetWorld()->GetFirstPlayerController();
+		AMyHUD* hud = Cast<AMyHUD>(PController->GetHUD());
 
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, temp);
+		// If inventory is displayed, undisplay it. 
+		if (myInventory->inventoryShowing)
+		{
+			hud->clearWidgets();
+			myInventory->inventoryShowing = false;
+			PController->bShowMouseCursor = false;
+			return;
+		}
 
-
+		// Otherwise, display the player's inventory 
+		myInventory->inventoryShowing = true;
+		PController->bShowMouseCursor = true;
+		for (TMap<FString, APickUpItem*>::TIterator it =
+			myInventory->CreateIterator(); it; ++it)
+		{
+			// Combine string name of the item, with qty eg Cow x 5 
+			FString fs = it->Key + FString::Printf(TEXT(" x %d"), it->Value->Quantity);
+			UTexture2D* tex;
+			if (it->Value->Icon)
+			{
+				tex = it->Value->Icon;
+				hud->addWidget(Widget(Icon(fs, tex)));
+			}
+		}
 
 
 	

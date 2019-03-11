@@ -36,15 +36,14 @@ public:
 		float mouseSensitivity;
 
 	UPROPERTY()
-		UInventory* backpack;
+		UInventory* myInventory;
 
 
 									 //Icons for the items in the backpack
-	UPROPERTY()
-		TMap<FString, UTexture2D*> Icons;
+//	UPROPERTY()
+//		TMap<FString, UTexture2D*> Icons;
 
-	//Invetory being displayed currently?
-	bool inventoryShowing;
+
 
 	/* FUNCTIONS */
 

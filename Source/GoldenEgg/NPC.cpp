@@ -13,13 +13,13 @@ ANPC::ANPC(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitialize
 	PrimaryActorTick.bCanEverTick = true;
 	ProxSphere = ObjectInitializer.CreateDefaultSubobject<USphereComponent>(this, TEXT("Proximity Sphere"));	
 	ProxSphere->SetSphereRadius(32.0f);
+	NPCMessage = FString("Hello, player");
 	//Code to make ANPC::Prox() run when this proximity sphere overlaps another actor
 	ProxSphere->OnComponentBeginOverlap.AddDynamic(this, &ANPC::Prox);
 	ProxSphere->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepWorldTransform);
 	
 
-	NPCMessage = "Hi, I am Jack"; //Default NPC message can be changed in blueprint
-	NPCName = "NPC Jack"; //Default NPC name can be changed in blueprint
+
 	
 
 }
@@ -28,6 +28,7 @@ ANPC::ANPC(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitialize
 void ANPC::BeginPlay()
 {
 	Super::BeginPlay();
+
 	
 }
 
@@ -57,7 +58,7 @@ int ANPC::Prox_Implementation(UPrimitiveComponent* OverlappedComponent, AActor* 
 	if(FPController)
 	{
 		AMyHUD* hud = Cast<AMyHUD>(FPController->GetHUD());
-		hud->addMessage(Message(NPCName + FString(": ") + NPCMessage, 5.f, FColor::White, NPCFace));
+		hud->AddMessage(Message(NPCName + FString(": ") + NPCMessage, 5.f, FColor::White, NPCFace));
 	}
 //	UE_LOG(LogTemp, Warning, TEXT("Prox impl"));
 	return 0;

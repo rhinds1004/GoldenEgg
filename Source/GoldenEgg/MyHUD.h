@@ -11,6 +11,33 @@
  */
 
 
+struct Icon
+{
+	FString name;
+	UTexture2D* tex;
+	Icon() { name = "Unknown Icon"; tex = 0; }
+	Icon(FString& iName, UTexture2D* iTex)
+	{
+		name = iName;
+		tex = iTex;
+	}
+
+};
+
+struct Widget
+{
+	Icon icon;
+	FVector2D pos, size;
+	Widget(Icon iIcon)
+	{
+		icon = iIcon;
+	}
+	float left() { return pos.X; }
+	float right() { return pos.X + size.X; }
+	float top() { return pos.Y; }
+	float bottom() { return pos.Y + size.Y; }
+};
+
 struct Message
 {
 	FString message;
@@ -44,6 +71,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = HUDFont)
 		UFont* hudFont;
 	TArray<Message> messages;
+	//Holds array of widget structs
+	TArray<Widget> widgets;
+	//holds screen dimensions
+	FVector2D dims;
 	float canvasSizeX = 0.f;
 	float canvasSizeY = 0.f;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = HUDSettings)
@@ -57,13 +88,19 @@ public:
 
 	virtual void DrawHUD() override;
 	
-	void addMessage(Message msg);
+	void AddMessage(Message msg);
 
-	void drawMessages();
+	void DrawMessages();
 
 
 	void drawMessage(Message msg, int lineCount);
+	void addWidget(Widget widget);
+	void clearWidgets();
 
 	void DrawHpBar(float currentHP, float maxHp);
 	
+	UFUNCTION()
+	void DrawWidgets();
+
+	 FVector2D ViewportSize;
 };
