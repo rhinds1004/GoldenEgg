@@ -24,7 +24,7 @@ protected:
 public:	
 	// Called every frame
 	//virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-
+	UFUNCTION()
 	void AddInventoryItem(APickUpItem* item);
 	//void GetInventoryItem(FString name);
 	int32 itemQuantity(FString itemName);
@@ -32,8 +32,11 @@ public:
 	void DisplayInventory();
 	//Invetory being displayed currently?
 	bool inventoryShowing;
+
 	TMap<FString, APickUpItem*>::TIterator CreateIterator();
 
+	UFUNCTION()
+	TArray<APickUpItem*> InventoryList();
 
 private:
 	UPROPERTY(VisibleAnywhere, Category = Inventory)

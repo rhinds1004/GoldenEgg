@@ -32,10 +32,16 @@ struct Widget
 	{
 		icon = iIcon;
 	}
+
 	float left() { return pos.X; }
 	float right() { return pos.X + size.X; }
 	float top() { return pos.Y; }
 	float bottom() { return pos.Y + size.Y; }
+	//checks if point inside a rectangle
+	bool hit(FVector2D point)
+	{
+		return point.X > left() && point.X < right() && point.Y > top() && point.Y < bottom();
+	}
 };
 
 struct Message
@@ -83,6 +89,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = HUDSettings)
 	 float barMargin;
 
+		Widget* heldWidget;  // hold the last touched Widget in memory 
+
 	virtual void DrawHUD() override;
 	
 	void AddMessage(Message msg);
@@ -99,6 +107,11 @@ public:
 	
 	UFUNCTION()
 	void DrawWidgets();
+
+	UFUNCTION()
+	void MouseClicked();
+	UFUNCTION()
+	void MouseMoved();
 
 	//holds screen dimensions
 	FVector2D ViewportSize;

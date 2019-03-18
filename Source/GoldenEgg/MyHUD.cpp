@@ -120,3 +120,40 @@ void AMyHUD::DrawWidgets()
 		DrawText(widgets[i].icon.name, FLinearColor::Yellow, widgets[i].pos.X, widgets[i].pos.Y, hudFont, .6f, false);
 	}
 }
+
+void AMyHUD::MouseClicked()
+{
+	FVector2D mouse;
+	APlayerController* PController = GetWorld()->GetFirstPlayerController();
+	PController->GetMousePosition(mouse.X, mouse.Y);
+	heldWidget = NULL; // clear handle on last held widget 
+                       // go and see if mouse xy click pos hits any widgets
+	for (int c = 0; c < widgets.Num(); c++)
+	{
+		if (widgets[c].hit(mouse))
+		{
+			heldWidget = &widgets[c]; //save widget
+			return;
+		}
+	}
+
+
+}
+/*Checks to see if the mouse button has been held down. If yes it moves the held widget to the new mouse x&y position*/
+void AMyHUD::MouseMoved()
+{
+	static FVector2D lastMouse; //static variable (global with local scope) is used to remember the lastMouse position between the calls for the MouseMoved() function.
+	FVector2D thisMouse;
+	FVector2D dMouse;
+	APlayerController* PController = GetWorld()->GetFirstPlayerController();
+	PController->GetMousePosition(thisMouse.X, thisMouse.Y);
+	dMouse = thisMouse - lastMouse;
+	float time = PController->GetInputKeyTimeDown(EKeys::LeftMouseButton);
+	if (time > 0.f && heldWidget)
+	{
+		heldWidget->pos.X += dMouse.X;
+		heldWidget->pos.Y += dMouse.Y; //Y is inverted
+	}
+
+	lastMouse = thisMouse;
+}

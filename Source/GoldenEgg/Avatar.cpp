@@ -48,6 +48,7 @@ void AAvatar::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	PlayerInputComponent->BindAxis("LookX", this, &AAvatar::LookX);
 	PlayerInputComponent->BindAxis("LookY", this, &AAvatar::LookY);
 	PlayerInputComponent->BindAction("Inventory", IE_Pressed, this, &AAvatar::ToggleInventory);
+	PlayerInputComponent->BindAction("MouseClickedLMB", IE_Pressed, this, &AAvatar::MouseClicked);
 
 }
 
@@ -87,13 +88,41 @@ void AAvatar::StrafeRight(float amt)
 //Player view looks along X axis
 void AAvatar::LookX(float amt)
 {
-	AddControllerYawInput(mouseSensitivity * amt * GetWorld()->GetDeltaSeconds());
+	
+	if (myInventory->inventoryShowing)
+	{
+		APlayerController* PController = GetWorld()->GetFirstPlayerController();
+		AMyHUD* hud = Cast<AMyHUD>(PController->GetHUD());
+		hud->MouseMoved();
+		return;
+	}
+	else
+	{
+		AddControllerYawInput(mouseSensitivity * amt * GetWorld()->GetDeltaSeconds());
+	}
 }
 
 //Player view looks along Y axis
 void AAvatar::LookY(float amt)
 {
-	AddControllerPitchInput(mouseSensitivity * amt * GetWorld()->GetDeltaSeconds());
+	if (myInventory->inventoryShowing)
+	{
+		APlayerController* PController = GetWorld()->GetFirstPlayerController();
+		AMyHUD* hud = Cast<AMyHUD>(PController->GetHUD());
+		hud->MouseMoved();
+		return;
+	}
+	else
+	{
+		AddControllerPitchInput(mouseSensitivity * amt * GetWorld()->GetDeltaSeconds());
+	}
+}
+
+void AAvatar::MouseClicked()
+{
+	APlayerController* PController = GetWorld()->GetFirstPlayerController();
+	AMyHUD* hud = Cast<AMyHUD>(PController->GetHUD());
+	hud->MouseClicked();
 }
 
 float AAvatar::GetCurrentHp()
@@ -132,6 +161,7 @@ void AAvatar::PickUp(APickUpItem* item)
 }
 
 /*Toggles if the player's inventory is to be displayed or not. */
+
 void AAvatar::ToggleInventory()
 {
 	if (GEngine)
@@ -153,7 +183,7 @@ void AAvatar::ToggleInventory()
 		// Otherwise, display the player's inventory 
 		myInventory->inventoryShowing = true;
 		PController->bShowMouseCursor = true;
-		for (TMap<FString, APickUpItem*>::TIterator it =
+		for (auto it =
 			myInventory->CreateIterator(); it; ++it)
 		{
 			// Combine string name of the item, with qty eg Cow x 5 
@@ -169,5 +199,45 @@ void AAvatar::ToggleInventory()
 
 	
 	}
+
 }
 
+
+/*
+void AAvatar::ToggleInventory()
+{
+	if (GEngine)
+	{
+
+		// Get the controller & hud 
+		APlayerController* PController = GetWorld()->GetFirstPlayerController();
+		AMyHUD* hud = Cast<AMyHUD>(PController->GetHUD());
+
+		// If inventory is displayed, undisplay it. 
+		if (myInventory->inventoryShowing)
+		{
+			hud->clearWidgets();
+			myInventory->inventoryShowing = false;
+			PController->bShowMouseCursor = false;
+			return;
+		}
+
+		// Otherwise, display the player's inventory 
+		inventoryList = myInventory->InventoryList();
+		myInventory->inventoryShowing = true;
+		PController->bShowMouseCursor = true;
+		for (auto& inventoryItem : inventoryList)
+		{
+			// Combine string name of the item, with qty eg Cow x 5 
+			FString fs = inventoryItem->Name + FString::Printf(TEXT(" x %d"), inventoryItem->Quantity);
+			UTexture2D* tex;
+			if (inventoryItem)
+			{
+				tex = inventoryItem->Icon;
+				hud->addWidget(Widget(Icon(fs, tex)));
+			}
+		}
+
+	}
+}
+*/

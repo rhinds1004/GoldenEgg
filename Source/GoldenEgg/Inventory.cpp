@@ -36,15 +36,21 @@ void UInventory::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompo
 	// ...
 } */
 
-void UInventory::AddInventoryItem(APickUpItem * item)
+void UInventory::AddInventoryItem(APickUpItem* item)
 {
 	if (inventory.Find(item->Name))
 	{
-		inventory[item->Name] += item->Quantity;
+		inventory[item->Name]->Quantity += item->Quantity;
 	}
 	else
 	{
-		inventory.Add(item->Name, item);
+		APickUpItem* newItem = NewObject<APickUpItem>(item);
+		newItem->Name = item->Name;
+		newItem->Quantity = item->Quantity;
+		newItem->Mesh = item->Mesh;
+		newItem->ProxSphere = item->ProxSphere;
+		newItem->Icon = item->Icon;
+		inventory.Emplace(item->Name, newItem);
 	}
 }
 
@@ -71,5 +77,17 @@ void UInventory::DisplayInventory()
 TMap<FString, APickUpItem*>::TIterator UInventory::CreateIterator()
 {
 	return inventory.CreateIterator();
+}
+
+TArray<APickUpItem*> UInventory::InventoryList()
+{
+	
+	TArray<APickUpItem*> tempList;
+	for (auto it =
+		inventory.CreateIterator(); it; ++it)
+	{
+		tempList.Add(it->Value);
+	}
+	return tempList;
 }
 

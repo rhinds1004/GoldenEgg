@@ -60,6 +60,8 @@ public:
 		void LookX(float amt);
 	UFUNCTION()
 		void LookY(float amt);
+	UFUNCTION()
+		void MouseClicked();
 
 	//Avatar status
 	UFUNCTION()
@@ -69,19 +71,21 @@ public:
 
 
 	//Avatar actions
-	UFUNCTION()
+//	UFUNCTION()
 		void PickUp(APickUpItem* Item);
-	UFUNCTION()
+//	UFUNCTION()
 		void ToggleInventory();
 
 	
 
 private:
-	UPROPERTY(VisibleAnywhere, Category = "NPC stats")
+	UPROPERTY(VisibleAnywhere, Category = "Avatar stats")
 		float maxHP;
-	UPROPERTY(VisibleAnywhere,  Category = "NPC stats")
+	UPROPERTY(VisibleAnywhere,  Category = "Avatar stats")
 		float currentHP;
 
+	UPROPERTY()
+		TArray<APickUpItem*> inventoryList;
 	
 
 };
