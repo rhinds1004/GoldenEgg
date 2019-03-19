@@ -115,7 +115,22 @@ void AMyHUD::DrawHpBar(float currentHp, float maxHp)
 
 void AMyHUD::DrawWidgets()
 {
-	
+	AAvatar* Avatar = Cast<AAvatar>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
+	float widgetX = 0;
+	float widgetY = 0;
+	FVector2D start(200, 200);
+	for (int j = 0; j < Avatar->myInventory->slotTotal; j++)
+	{
+		
+
+		DrawRect(FLinearColor::Blue, start.X + widgetX, start.Y + widgetY, 112, 112);
+		widgetX += 112;
+		if (widgetX > ViewportSize.X / 2)
+		{
+			widgetX = 0;
+			widgetY += 112;
+		}
+	}
 	for (int i = 0; i < widgets.Num(); i++)
 	{
 		DrawTexture(widgets[i].icon.tex, widgets[i].pos.X, widgets[i].pos.Y, widgets[i].size.X, widgets[i].size.Y, 0, 0, 1, 1);
