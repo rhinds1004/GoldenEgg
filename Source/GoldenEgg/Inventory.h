@@ -29,6 +29,10 @@ public:
 	//void GetInventoryItem(FString name);
 	int32 itemQuantity(FString itemName);
 	int32 numberOfSlotsUsed();
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Inventory)
+	int32 slotTotal;
+
 	void DisplayInventory();
 	//Invetory being displayed currently?
 	bool inventoryShowing;

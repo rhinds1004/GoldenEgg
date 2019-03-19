@@ -25,6 +25,7 @@ void AMyHUD::DrawHUD()
 		barPad = 12.f;
 	barHeight = 50.f;
 		barWidth = 200.f;
+		invWidgetsize = FVector2D(100, 100);
 }
 
 void AMyHUD::AddMessage(Message msg)
@@ -75,7 +76,7 @@ void AMyHUD::addWidget(Widget widget)
 	// find the pos of the widget based on the grid. 
 	// draw the icons.. 
 	FVector2D start(200, 200), pad(12, 12);
-	widget.size = FVector2D(100, 100);
+	widget.size = invWidgetsize;
 	widget.pos = start;
 	// compute the position here 
 	for (int c = 0; c < widgets.Num(); c++)
@@ -114,11 +115,13 @@ void AMyHUD::DrawHpBar(float currentHp, float maxHp)
 
 void AMyHUD::DrawWidgets()
 {
+	
 	for (int i = 0; i < widgets.Num(); i++)
 	{
 		DrawTexture(widgets[i].icon.tex, widgets[i].pos.X, widgets[i].pos.Y, widgets[i].size.X, widgets[i].size.Y, 0, 0, 1, 1);
 		DrawText(widgets[i].icon.name, FLinearColor::Yellow, widgets[i].pos.X, widgets[i].pos.Y, hudFont, .6f, false);
 	}
+
 }
 
 void AMyHUD::MouseClicked()

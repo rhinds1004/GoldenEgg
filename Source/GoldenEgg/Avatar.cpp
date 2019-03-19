@@ -195,9 +195,6 @@ void AAvatar::ToggleInventory()
 				hud->addWidget(Widget(Icon(fs, tex)));
 			}
 		}
-
-
-	
 	}
 
 }

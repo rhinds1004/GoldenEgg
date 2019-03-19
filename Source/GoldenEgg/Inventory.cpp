@@ -11,6 +11,7 @@ UInventory::UInventory()
 	// off to improve performance if you don't need them.
 	PrimaryComponentTick.bCanEverTick = true;
 	inventoryShowing = false;
+	slotTotal = 20;
 
 	// ...
 }
@@ -51,6 +52,8 @@ void UInventory::AddInventoryItem(APickUpItem* item)
 		newItem->ProxSphere = item->ProxSphere;
 		newItem->Icon = item->Icon;
 		inventory.Emplace(item->Name, newItem);
+		
+
 	}
 }
 

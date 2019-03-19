@@ -44,6 +44,7 @@ struct Widget
 	}
 };
 
+
 struct Message
 {
 	FString message;
@@ -89,8 +90,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = HUDSettings)
 	 float barMargin;
 
-		Widget* heldWidget;  // hold the last touched Widget in memory 
-
+	Widget* heldWidget;  // hold the last touched Widget in memory 
+		
+		UPROPERTY()
+			FVector2D invWidgetsize;
 	virtual void DrawHUD() override;
 	
 	void AddMessage(Message msg);

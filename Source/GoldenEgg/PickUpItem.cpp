@@ -61,7 +61,7 @@ int APickUpItem::Prox_Implementation(UPrimitiveComponent * OverlappedComponent, 
 	//get the hud for the first player controller
 	AMyHUD* hud = Cast<AMyHUD>(GetWorld()->GetFirstPlayerController()->GetHUD());
 	hud->AddMessage(Message(FString("Picked up: ") + FString::FromInt(Quantity) + FString(" ") + Name, 5.f, FColor::White, Icon));
-	
+
 	Destroy();
 
 	return 0;
