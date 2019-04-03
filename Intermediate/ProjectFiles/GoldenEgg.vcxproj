@@ -581,6 +581,8 @@
 		<ClInclude Include="..\..\Source\GoldenEgg\GoldenEggPlayerController.h" />
 		<ClCompile Include="..\..\Source\GoldenEgg\Inventory.cpp" />
 		<ClInclude Include="..\..\Source\GoldenEgg\Inventory.h" />
+		<ClCompile Include="..\..\Source\GoldenEgg\MonsterBase.cpp" />
+		<ClInclude Include="..\..\Source\GoldenEgg\MonsterBase.h" />
 		<ClCompile Include="..\..\Source\GoldenEgg\MyHUD.cpp" />
 		<ClInclude Include="..\..\Source\GoldenEgg\MyHUD.h" />
 		<ClCompile Include="..\..\Source\GoldenEgg\NPC.cpp" />

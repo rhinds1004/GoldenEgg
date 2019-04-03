@@ -119,16 +119,19 @@ void AMyHUD::DrawWidgets()
 	float widgetX = 0;
 	float widgetY = 0;
 	FVector2D start(200, 200);
-	for (int j = 0; j < Avatar->myInventory->slotTotal; j++)
+	if (Avatar->myInventory->inventoryShowing)
 	{
-		
-
-		DrawRect(FLinearColor::Blue, start.X + widgetX, start.Y + widgetY, 112, 112);
-		widgetX += 112;
-		if (widgetX > ViewportSize.X / 2)
+		for (int j = 0; j < Avatar->myInventory->slotTotal; j++)
 		{
-			widgetX = 0;
-			widgetY += 112;
+
+
+			DrawRect(FLinearColor::Blue, start.X + widgetX, start.Y + widgetY, 112, 112);
+			widgetX += 112;
+			if (widgetX > ViewportSize.X / 2)
+			{
+				widgetX = 0;
+				widgetY += 112;
+			}
 		}
 	}
 	for (int i = 0; i < widgets.Num(); i++)
@@ -153,7 +156,9 @@ void AMyHUD::MouseClicked()
 			heldWidget = &widgets[c]; //save widget
 			return;
 		}
+
 	}
+
 
 
 }
