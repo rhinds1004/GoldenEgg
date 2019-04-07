@@ -1,6 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
+
 #include "MonsterBase.h"
+#include "Avatar.h"
+#include "Kismet/GameplayStatics.h"
 
 
 // Sets default values
@@ -34,6 +37,19 @@ void AMonsterBase::BeginPlay()
 void AMonsterBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	AAvatar* avatar = Cast<AAvatar>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
+	if (!avatar) return;
+	//since it is avatar loc - get this actor loc. we are creating a vector from this actor to the avatar.
+	FVector toPlayer = avatar->GetActorLocation() - GetActorLocation();
+	//since we don't care about magnitude we can normalize vector
+	toPlayer.Normalize();
+	//move this actor towards the player avatar
+	AddMovementInput(toPlayer, Speed*DeltaTime);
+	//Get the rotator that looks in the 'toPlayer' direction
+	FRotator toPlayerRotation = toPlayer.ToOrientationRotator();
+	toPlayerRotation.Pitch = 0; //o off the pitch
+	RootComponent->SetWorldRotation(toPlayerRotation);
+
 
 }
 
