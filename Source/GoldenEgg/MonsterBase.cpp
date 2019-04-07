@@ -4,11 +4,23 @@
 
 
 // Sets default values
-AMonsterBase::AMonsterBase()
+AMonsterBase::AMonsterBase(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+	Speed = 20;
+	HitPoints = 20;
+	Experience = 0;
+	BPLoot = NULL;
+	BaseAttackDamage = 1;
+	AttackTimeout = 1.5f;
+	TimeSinceLastStrike = 0;
 
+	SightSphere = ObjectInitializer.CreateDefaultSubobject<USphereComponent>(this, TEXT("SightSphere"));
+	SightSphere->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepWorldTransform);
+
+	AttackRangeSphere = ObjectInitializer.CreateDefaultSubobject<USphereComponent>(this, TEXT("AttackRangeSphere"));
+	AttackRangeSphere->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepWorldTransform);
 }
 
 // Called when the game starts or when spawned

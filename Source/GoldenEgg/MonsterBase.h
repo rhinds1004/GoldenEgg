@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "Components/SphereComponent.h"
 #include "MonsterBase.generated.h"
 
 UCLASS()
@@ -13,7 +14,7 @@ class GOLDENEGG_API AMonsterBase : public ACharacter
 
 public:
 	// Sets default values for this character's properties
-	AMonsterBase();
+	AMonsterBase(const FObjectInitializer& ObjectInitializer);
 
 protected:
 	// Called when the game starts or when spawned
@@ -26,6 +27,39 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	// Movement speed
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = MonsterProperties)
+		float Speed;
 	
-	
+	//Monster's hitpoints
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = MonsterProperties)
+		float HitPoints;
+
+	//Experience gained for defeating the monster
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = MonsterProperties)
+		int32 Experience;
+
+	//Blueprint of the type of item dropped by the monster
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = MonsterProperties)
+		UClass *BPLoot;
+
+	//base amount of damage monster attacks do
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = MonsterProperties)
+		float BaseAttackDamage;
+
+	//Amount of time needed for monster to rest in between attacks
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = MonsterProperties)
+		float AttackTimeout;
+
+	//Time since last monster's attack. Blueprint readable only
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = MonsterProperties)
+	float TimeSinceLastStrike;
+
+	//Range of monster's sight
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = Collision)
+		USphereComponent* SightSphere;
+
+	//Range for his attack. Visualizes as a sphere in editor
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = Collision)
+		USphereComponent* AttackRangeSphere;
 };
