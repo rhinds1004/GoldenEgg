@@ -11,12 +11,13 @@ ANPC::ANPC(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitialize
 {
 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-	ProxSphere = ObjectInitializer.CreateDefaultSubobject<USphereComponent>(this, TEXT("Proximity Sphere"));	
+	ProxSphere = ObjectInitializer.CreateDefaultSubobject<USphereComponent>(this, TEXT("Proximity Sphere"));
+	ProxSphere->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepWorldTransform);
 	ProxSphere->SetSphereRadius(32.0f);
 	NPCMessage = FString("Hello, player");
 	//Code to make ANPC::Prox() run when this proximity sphere overlaps another actor
 	ProxSphere->OnComponentBeginOverlap.AddDynamic(this, &ANPC::Prox);
-	ProxSphere->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepWorldTransform);
+
 	
 
 

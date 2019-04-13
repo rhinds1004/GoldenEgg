@@ -20,10 +20,10 @@ AMonsterBase::AMonsterBase(const FObjectInitializer& ObjectInitializer) : Super(
 	TimeSinceLastStrike = 0;
 
 	SightSphere = ObjectInitializer.CreateDefaultSubobject<USphereComponent>(this, TEXT("SightSphere"));
-	SightSphere->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepWorldTransform);
+	SightSphere->SetupAttachment(RootComponent);
 
 	AttackRangeSphere = ObjectInitializer.CreateDefaultSubobject<USphereComponent>(this, TEXT("AttackRangeSphere"));
-	AttackRangeSphere->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepWorldTransform);
+	AttackRangeSphere->SetupAttachment(RootComponent);
 }
 
 // Called when the game starts or when spawned
@@ -41,6 +41,16 @@ void AMonsterBase::Tick(float DeltaTime)
 	if (!avatar) return;
 	//since it is avatar loc - get this actor loc. we are creating a vector from this actor to the avatar.
 	FVector toPlayer = avatar->GetActorLocation() - GetActorLocation();
+	float distanceToPlayer = toPlayer.Size();
+	if (distanceToPlayer > SightSphere->GetScaledSphereRadius())
+	{
+		//If the player is out of sight, then enemy cannot chase
+		return;
+	}
+	toPlayer /= distanceToPlayer; // normalizes the vector
+	//Actually move the monster towards the player a bit
+	AddMovementInput(toPlayer, Speed*DeltaTime);
+
 	//since we don't care about magnitude we can normalize vector
 	toPlayer.Normalize();
 	//move this actor towards the player avatar
