@@ -4,6 +4,10 @@
 #include "MonsterBase.h"
 #include "Avatar.h"
 #include "Kismet/GameplayStatics.h"
+#include "Engine/SkeletalMeshSocket.h"
+#include "Components/SkeletalMeshComponent.h"
+//#include "GameFramework/Character.h"
+
 
 
 // Sets default values
@@ -68,5 +72,23 @@ void AMonsterBase::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+}
+
+void AMonsterBase::PostInitializeComponents()
+{
+Super::PostInitializeComponents();
+	//Instantiate the melee weapon if a bp was selected
+	if(BP_MeleeWeapon)
+	{
+		MeleeWeapon = GetWorld()->SpawnActor<AMeleeWeapon>(BP_MeleeWeapon, FVector(), FRotator());
+		
+		if (MeleeWeapon)
+		{
+		
+			const USkeletalMeshSocket* socket = GetMesh()->GetSocketByName(FName("RightHandSocket"));
+			socket->AttachActor(MeleeWeapon, GetMesh());
+			MeleeWeapon->WeaponHolder = this;
+		}
+	}
 }
 

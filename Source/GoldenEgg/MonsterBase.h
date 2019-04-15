@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "Components/SphereComponent.h"
+#include "MeleeWeapon.h"
 #include "MonsterBase.generated.h"
 
 UCLASS()
@@ -26,6 +27,8 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+	virtual void PostInitializeComponents() override;
 
 	// Movement speed
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = MonsterProperties)
@@ -62,4 +65,21 @@ public:
 	//Range for his attack. Visualizes as a sphere in editor
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = Collision)
 		USphereComponent* AttackRangeSphere;
+
+	//The melee weapon class the monster uses. If not set, uses a melee attack
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = MonsterProperties)
+		UClass* BP_MeleeWeapon;
+
+	//The MeleeWeapon instance (set if the character is using a melee weapon)
+	AMeleeWeapon* MeleeWeapon;
+
+	inline bool isInSightRange( float d)
+	{
+		return d < SightSphere->GetScaledSphereRadius();
+	}
+
+	inline bool isInAttackRange (float d)
+	{
+		return d < AttackRangeSphere->GetScaledSphereRadius();
+	}
 };
