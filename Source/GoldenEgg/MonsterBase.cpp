@@ -54,11 +54,6 @@ void AMonsterBase::Tick(float DeltaTime)
 	toPlayer /= distanceToPlayer; // normalizes the vector
 	//Actually move the monster towards the player a bit
 	AddMovementInput(toPlayer, Speed*DeltaTime);
-
-	//since we don't care about magnitude we can normalize vector
-	toPlayer.Normalize();
-	//move this actor towards the player avatar
-	AddMovementInput(toPlayer, Speed*DeltaTime);
 	//Get the rotator that looks in the 'toPlayer' direction
 	FRotator toPlayerRotation = toPlayer.ToOrientationRotator();
 	toPlayerRotation.Pitch = 0; //o off the pitch
@@ -77,6 +72,7 @@ void AMonsterBase::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 void AMonsterBase::PostInitializeComponents()
 {
 Super::PostInitializeComponents();
+
 	//Instantiate the melee weapon if a bp was selected
 	if(BP_MeleeWeapon)
 	{
@@ -89,6 +85,16 @@ Super::PostInitializeComponents();
 			socket->AttachActor(MeleeWeapon, GetMesh());
 			MeleeWeapon->WeaponHolder = this;
 		}
+	}
+	
+}
+
+//Checks if weapon is currently being swung
+void AMonsterBase::SwordSwung()
+{
+	if (MeleeWeapon)
+	{
+		MeleeWeapon->Swing();
 	}
 }
 

@@ -570,6 +570,8 @@
 		<None Include="..\..\Config\DefaultInput.ini" />
 		<ClCompile Include="..\..\Source\GoldenEgg\Avatar.cpp" />
 		<ClInclude Include="..\..\Source\GoldenEgg\Avatar.h" />
+		<ClCompile Include="..\..\Source\GoldenEgg\BP_MyMeleeWeapon.cpp" />
+		<ClInclude Include="..\..\Source\GoldenEgg\BP_MyMeleeWeapon.h" />
 		<ClCompile Include="..\..\Source\GoldenEgg\GameModeGoldenEgg.cpp" />
 		<ClInclude Include="..\..\Source\GoldenEgg\GameModeGoldenEgg.h" />
 		<None Include="..\..\Source\GoldenEgg\GoldenEgg.Build.cs" />
@@ -581,6 +583,8 @@
 		<ClInclude Include="..\..\Source\GoldenEgg\GoldenEggPlayerController.h" />
 		<ClCompile Include="..\..\Source\GoldenEgg\Inventory.cpp" />
 		<ClInclude Include="..\..\Source\GoldenEgg\Inventory.h" />
+		<ClCompile Include="..\..\Source\GoldenEgg\MeleeWeapon.cpp" />
+		<ClInclude Include="..\..\Source\GoldenEgg\MeleeWeapon.h" />
 		<ClCompile Include="..\..\Source\GoldenEgg\MonsterBase.cpp" />
 		<ClInclude Include="..\..\Source\GoldenEgg\MonsterBase.h" />
 		<ClCompile Include="..\..\Source\GoldenEgg\MyHUD.cpp" />

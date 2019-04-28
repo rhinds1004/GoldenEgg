@@ -17,11 +17,13 @@ AMeleeWeapon::AMeleeWeapon(const FObjectInitializer& ObjectInitializer) : Super(
 	WeaponHolder = NULL;
 
 	Mesh = ObjectInitializer.CreateDefaultSubobject<UStaticMeshComponent>(this, TEXT("Mesh"));
-	SetRootComponent(Mesh);
+	RootComponent = Mesh;
+	//SetRootComponent(Mesh);
 
 	ProxBox = ObjectInitializer.CreateDefaultSubobject<UBoxComponent>(this,TEXT("ProxBox"));
 	ProxBox->OnComponentBeginOverlap.AddDynamic(this, &AMeleeWeapon::Prox);
 	ProxBox->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepWorldTransform);
+
 	
 }
 
@@ -29,6 +31,7 @@ AMeleeWeapon::AMeleeWeapon(const FObjectInitializer& ObjectInitializer) : Super(
 void AMeleeWeapon::BeginPlay()
 {
 	Super::BeginPlay();
+	
 
 }
 
@@ -42,6 +45,7 @@ void AMeleeWeapon::Tick(float DeltaTime)
 int AMeleeWeapon::Prox_Implementation(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp,
 	int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
+
 	//don't hit non root components
 	if (OtherComp != OtherActor->GetRootComponent()) 
 	{

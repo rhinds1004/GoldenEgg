@@ -87,5 +87,6 @@ private:
 	UPROPERTY()
 		TArray<APickUpItem*> inventoryList;
 	
-
+	UFUNCTION()
+		float TakeDamage(float Damage, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, class AActor* DamageCauser) override;
 };
