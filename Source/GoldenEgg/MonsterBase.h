@@ -73,6 +73,14 @@ public:
 	//The MeleeWeapon instance (set if the character is using a melee weapon)
 	AMeleeWeapon* MeleeWeapon;
 
+	//Blueprint reference for the project used by the monster
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = MonsterProperties)
+		UClass* BP_Projectile;
+
+	//Thrust behind the projectile launches
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = MonsterProperties)
+	float ProjectileLaunchImpulse;
+
 	//checkss if an object is within in the monster's sight sphere. 
 	UFUNCTION(BlueprintCallable)
 	inline bool isInSightRange( float d)
@@ -90,4 +98,7 @@ public:
 	//Checks if weapon is currently being swung
 	UFUNCTION(BlueprintCallable, Category = Collision)
 		void SwordSwung();
+
+	UFUNCTION()
+		void Attack(AActor* thing);
 };

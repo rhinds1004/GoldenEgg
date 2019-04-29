@@ -6,6 +6,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "Engine/SkeletalMeshSocket.h"
 #include "Components/SkeletalMeshComponent.h"
+#include "Projectile.h"
 //#include "GameFramework/Character.h"
 
 
@@ -52,14 +53,32 @@ void AMonsterBase::Tick(float DeltaTime)
 		return;
 	}
 	toPlayer /= distanceToPlayer; // normalizes the vector
-	//Actually move the monster towards the player a bit
-	AddMovementInput(toPlayer, Speed*DeltaTime);
+
 	//Get the rotator that looks in the 'toPlayer' direction
 	FRotator toPlayerRotation = toPlayer.ToOrientationRotator();
 	toPlayerRotation.Pitch = 0; //o off the pitch
 	RootComponent->SetWorldRotation(toPlayerRotation);
 
+	if (isInAttackRange(distanceToPlayer))
+	{
+		//Perform the attack
+		if (!TimeSinceLastStrike)
+		{
+			Attack(avatar);
+		}
 
+		TimeSinceLastStrike += DeltaTime;
+		if (TimeSinceLastStrike > AttackTimeout)
+		{
+			TimeSinceLastStrike = 0;
+		}
+		return;
+	}
+	else
+	{
+		//Actually move the monster towards the player a bit
+		AddMovementInput(toPlayer, Speed*DeltaTime);
+	}
 }
 
 // Called to bind functionality to input
@@ -95,6 +114,34 @@ void AMonsterBase::SwordSwung()
 	if (MeleeWeapon)
 	{
 		MeleeWeapon->Swing();
+	}
+}
+
+void AMonsterBase::Attack(AActor * thing)
+{
+	if (MeleeWeapon)
+	{
+		MeleeWeapon->Swing();
+	}
+	else if (BP_Projectile)
+	{
+		FVector fwd = GetActorForwardVector();
+		FVector nozzle = GetMesh()->GetBoneLocation("RightHand");
+		nozzle += fwd * 25; // move it fwd of the monster so doesn't hit the mosnter model
+		FVector toOpponent = thing->GetActorLocation() - nozzle;
+		toOpponent.Normalize();
+		AProjectile* projectile = GetWorld()->SpawnActor<AProjectile>(BP_Projectile, nozzle, RootComponent->GetComponentRotation());
+
+		if (projectile)
+		{
+			projectile->Firer = this;
+			projectile->ProxSphere->AddImpulse(toOpponent*ProjectileLaunchImpulse);
+			projectile->Mesh->AddImpulse(toOpponent*ProjectileLaunchImpulse);
+		}
+		else
+		{
+			UE_LOG(LogTemp, Error, TEXT("monster: no projectile actor could be spawned. Is the bullet overlapping something"))
+		}
 	}
 }
 
