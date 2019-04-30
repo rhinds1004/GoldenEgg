@@ -26,7 +26,6 @@ AAvatar::AAvatar(const FObjectInitializer& ObjectInitializer)
 void AAvatar::BeginPlay()
 {
 	Super::BeginPlay();
-
 }
 
 // Called every frame
