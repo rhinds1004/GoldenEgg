@@ -198,6 +198,18 @@ void AAvatar::ToggleInventory()
 
 }
 
+//determine damage done and then subtract that amount from current hp
+float AAvatar::TakeDamage(float Damage, FDamageEvent const & DamageEvent, AController * EventInstigator, AActor * DamageCauser)
+{
+	// Call the base class - this will tell us how much damage to apply  
+	const float ActualDamage = Super::TakeDamage(Damage, DamageEvent, EventInstigator, DamageCauser);
+	if (ActualDamage > 0.f)
+	{
+		currentHP -= ActualDamage;
+	}
+	return ActualDamage;
+}
+
 
 /*
 void AAvatar::ToggleInventory()
