@@ -127,7 +127,7 @@ void AMonsterBase::Attack(AActor * thing)
 	{
 		FVector fwd = GetActorForwardVector();
 		FVector nozzle = GetMesh()->GetBoneLocation("RightHand");
-		nozzle += fwd * 25; // move it fwd of the monster so doesn't hit the mosnter model
+		nozzle += fwd * 100; // move it fwd of the monster so doesn't hit the mosnter model
 		FVector toOpponent = thing->GetActorLocation() - nozzle;
 		toOpponent.Normalize();
 		AProjectile* projectile = GetWorld()->SpawnActor<AProjectile>(BP_Projectile, nozzle, RootComponent->GetComponentRotation());
