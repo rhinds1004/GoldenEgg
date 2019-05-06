@@ -23,6 +23,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Properties)
 		float Damage;
 
+	//Life span of the projectile in seconds
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Properties)
 		float LifeSpan;
 
@@ -39,6 +40,7 @@ public:
 		void Prox(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 		virtual int Prox_Implementation(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 	
+		// Who is firing the projectile
 		AMonsterBase* Firer;
 
 protected:

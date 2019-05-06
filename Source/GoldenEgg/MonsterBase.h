@@ -81,6 +81,14 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = MonsterProperties)
 	float ProjectileLaunchImpulse;
 
+	//The vector of the point on the mesh where the projectile will be fired from 
+	UPROPERTY(VisibleAnywhere, Category = MonsterProperties)
+		FVector Nozzle;
+
+	//distance to move projectile fwd of the monster so doesn't hit the mosnter model
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = MonsterProperties)
+		float MoveProjectileFwdAmount;
+
 	//checkss if an object is within in the monster's sight sphere. 
 	UFUNCTION(BlueprintCallable)
 	inline bool isInSightRange( float d)

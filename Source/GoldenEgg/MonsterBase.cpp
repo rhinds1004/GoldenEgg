@@ -35,7 +35,6 @@ AMonsterBase::AMonsterBase(const FObjectInitializer& ObjectInitializer) : Super(
 void AMonsterBase::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
 // Called every frame
@@ -126,17 +125,16 @@ void AMonsterBase::Attack(AActor * thing)
 	else if (BP_Projectile)
 	{
 		FVector fwd = GetActorForwardVector();
-		FVector nozzle = GetMesh()->GetBoneLocation("RightHand");
-		nozzle += fwd * 100; // move it fwd of the monster so doesn't hit the mosnter model
-		FVector toOpponent = thing->GetActorLocation() - nozzle;
+		Nozzle = GetMesh()->GetBoneLocation("RightHand");
+		Nozzle += fwd * MoveProjectileFwdAmount; // move it fwd of the monster so doesn't hit the mosnter model
+		FVector toOpponent = thing->GetActorLocation() - Nozzle;
 		toOpponent.Normalize();
-		AProjectile* projectile = GetWorld()->SpawnActor<AProjectile>(BP_Projectile, nozzle, RootComponent->GetComponentRotation());
+		AProjectile* projectile = GetWorld()->SpawnActor<AProjectile>(BP_Projectile, Nozzle, RootComponent->GetComponentRotation());
 
 		if (projectile)
 		{
 			projectile->Firer = this;
 			projectile->ProxSphere->AddImpulse(toOpponent*ProjectileLaunchImpulse);
-		//	projectile->Mesh->AddImpulse(toOpponent*ProjectileLaunchImpulse);
 		}
 		else
 		{
