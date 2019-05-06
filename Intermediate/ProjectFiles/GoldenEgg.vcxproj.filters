@@ -4,7 +4,7 @@
 	<ItemGroup>
 		<None Include="..\..\GoldenEgg.uproject" />
 		<Filter Include="Source">
-			<UniqueIdentifier>{B966331D-A259-4C88-BAD7-EFBDAA358C37}</UniqueIdentifier>
+			<UniqueIdentifier>{02BB5F1A-6708-4262-A06F-E62FEDD59562}</UniqueIdentifier>
 		</Filter>
 		<None Include="..\..\Source\GoldenEgg.Target.cs">
 			<Filter>Source</Filter>
@@ -13,7 +13,7 @@
 			<Filter>Source</Filter>
 		</None >
 		<Filter Include="Config">
-			<UniqueIdentifier>{FB25A265-A17D-49A3-B577-E28351778977}</UniqueIdentifier>
+			<UniqueIdentifier>{9EF1E5CF-75C1-42B8-9046-0BA7E1DC6CFA}</UniqueIdentifier>
 		</Filter>
 		<None Include="..\..\Config\DefaultEditor.ini">
 			<Filter>Config</Filter>
@@ -31,18 +31,12 @@
 			<Filter>Config</Filter>
 		</None >
 		<Filter Include="Source\GoldenEgg">
-			<UniqueIdentifier>{1EBB6389-7464-4DAA-934A-6817D447C270}</UniqueIdentifier>
+			<UniqueIdentifier>{00BF20A8-485F-4506-A579-ED1E33524C42}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="..\..\Source\GoldenEgg\Avatar.cpp">
 			<Filter>Source\GoldenEgg</Filter>
 		</ClCompile >
 		<ClInclude Include="..\..\Source\GoldenEgg\Avatar.h">
-			<Filter>Source\GoldenEgg</Filter>
-		</ClInclude >
-		<ClCompile Include="..\..\Source\GoldenEgg\BP_MyMeleeWeapon.cpp">
-			<Filter>Source\GoldenEgg</Filter>
-		</ClCompile >
-		<ClInclude Include="..\..\Source\GoldenEgg\BP_MyMeleeWeapon.h">
 			<Filter>Source\GoldenEgg</Filter>
 		</ClInclude >
 		<ClCompile Include="..\..\Source\GoldenEgg\GameModeGoldenEgg.cpp">
@@ -106,6 +100,12 @@
 			<Filter>Source\GoldenEgg</Filter>
 		</ClCompile >
 		<ClInclude Include="..\..\Source\GoldenEgg\PickUpItem.h">
+			<Filter>Source\GoldenEgg</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\GoldenEgg\Projectile.cpp">
+			<Filter>Source\GoldenEgg</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\GoldenEgg\Projectile.h">
 			<Filter>Source\GoldenEgg</Filter>
 		</ClInclude >
 	</ItemGroup>

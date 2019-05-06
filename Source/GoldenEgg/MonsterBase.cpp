@@ -136,7 +136,7 @@ void AMonsterBase::Attack(AActor * thing)
 		{
 			projectile->Firer = this;
 			projectile->ProxSphere->AddImpulse(toOpponent*ProjectileLaunchImpulse);
-			projectile->Mesh->AddImpulse(toOpponent*ProjectileLaunchImpulse);
+		//	projectile->Mesh->AddImpulse(toOpponent*ProjectileLaunchImpulse);
 		}
 		else
 		{

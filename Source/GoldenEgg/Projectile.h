@@ -23,6 +23,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Properties)
 		float Damage;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Properties)
+		float LifeSpan;
+
 	// The visible Mesh for the component, so we can see
 	// the shooting object
 	UPROPERTY(VisibleDefaultsOnly, Category = Collision)
