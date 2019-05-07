@@ -79,6 +79,8 @@ public:
 	
 
 private:
+	FVector knockback; // in class AAVatar
+
 	UPROPERTY(VisibleAnywhere, Category = "Avatar stats")
 		float maxHP;
 	UPROPERTY(VisibleAnywhere,  Category = "Avatar stats")
@@ -88,5 +90,5 @@ private:
 		TArray<APickUpItem*> inventoryList;
 	
 	UFUNCTION()
-		float TakeDamage(float Damage, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, class AActor* DamageCauser) override;
+		virtual float TakeDamage(float Damage, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, class AActor* DamageCauser) override;
 };

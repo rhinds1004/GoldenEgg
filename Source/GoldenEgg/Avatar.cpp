@@ -32,7 +32,11 @@ void AAvatar::BeginPlay()
 void AAvatar::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	//apply knockback vector
+	AddMovementInput(1 * knockback, 1.f);
 
+	//half the size of the knockback each frame 
+	knockback *= 0.5f;
 }
 
 // Called to bind functionality to input
@@ -203,11 +207,16 @@ float AAvatar::TakeDamage(float Damage, FDamageEvent const & DamageEvent, AContr
 {
 	// Call the base class - this will tell us how much damage to apply  
 	const float ActualDamage = Super::TakeDamage(Damage, DamageEvent, EventInstigator, DamageCauser);
+	//add some knockback that gets applied over a few frames
+	//TODO make some kind of damagetype
+	knockback = GetActorLocation() - DamageCauser->GetActorLocation();
+	knockback.Normalize();
+	knockback *= Damage * 500;
 	if (ActualDamage > 0.f)
 	{
 		currentHP -= ActualDamage;
 	}
-	return ActualDamage;
+	return AActor::TakeDamage(Damage, DamageEvent, EventInstigator, DamageCauser);
 }
 
 

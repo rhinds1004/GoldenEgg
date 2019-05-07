@@ -570,6 +570,8 @@
 		<None Include="..\..\Config\DefaultInput.ini" />
 		<ClCompile Include="..\..\Source\GoldenEgg\Avatar.cpp" />
 		<ClInclude Include="..\..\Source\GoldenEgg\Avatar.h" />
+		<ClCompile Include="..\..\Source\GoldenEgg\FireProjectile.cpp" />
+		<ClInclude Include="..\..\Source\GoldenEgg\FireProjectile.h" />
 		<ClCompile Include="..\..\Source\GoldenEgg\GameModeGoldenEgg.cpp" />
 		<ClInclude Include="..\..\Source\GoldenEgg\GameModeGoldenEgg.h" />
 		<None Include="..\..\Source\GoldenEgg\GoldenEgg.Build.cs" />

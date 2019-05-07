@@ -6,6 +6,7 @@
 #include "GameFramework/Actor.h"
 #include "Components/SphereComponent.h"
 #include "Components/StaticMeshComponent.h"
+#include "GameFramework/DamageType.h"
 #include "Projectile.generated.h"
 
 class AMonsterBase;
@@ -42,6 +43,13 @@ public:
 	
 		// Who is firing the projectile
 		AMonsterBase* Firer;
+	
+		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Collision)
+			UDamageType* DamageType;
+
+		//TODO so how make damagetypes work
+		UPROPERTY(EditAnywhere)
+			TSubclassOf<UDamageType> KnockbackDamageType;
 
 protected:
 	// Called when the game starts or when spawned

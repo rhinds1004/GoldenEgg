@@ -14,7 +14,7 @@ class GOLDENEGG_API AFireProjectile : public AProjectile
 {
 	GENERATED_BODY()
 	
-	
+		
 	
 	
 };
