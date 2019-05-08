@@ -19,7 +19,12 @@ AProjectile::AProjectile(const FObjectInitializer& ObjectInitializer) : Super(Ob
 
 	Damage = 1.f;
 	LifeSpan = 7.f;
+
+	
+	
 }
+
+
 
 // Called when the game starts or when spawned
 void AProjectile::BeginPlay()
@@ -45,7 +50,17 @@ int AProjectile::Prox_Implementation(UPrimitiveComponent* OverlappedComponent, A
 	{
 		return -1;
 	}
-	OtherActor->TakeDamage(Damage, FDamageEvent(), NULL, this);
+	DoDamage(OtherActor, OtherComp);
 	Destroy();
+	return 0;
+}
+
+int AProjectile::DoDamage(AActor * OtherActor, UPrimitiveComponent * OtherComp)
+{
+	if (!OtherActor || !OtherComp)
+	{
+		return -1;
+	}
+	OtherActor->TakeDamage(Damage, FDamageEvent(), NULL, this);
 	return 0;
 }

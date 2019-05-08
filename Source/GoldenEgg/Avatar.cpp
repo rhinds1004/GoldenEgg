@@ -4,6 +4,7 @@
 #include "Engine/Engine.h"
 //#include "Inventory.h"
 #include "MyHUD.h"
+#include "MyDamageType.h"
 #include "PickUpItem.h"
 
 
@@ -209,9 +210,16 @@ float AAvatar::TakeDamage(float Damage, FDamageEvent const & DamageEvent, AContr
 	const float ActualDamage = Super::TakeDamage(Damage, DamageEvent, EventInstigator, DamageCauser);
 	//add some knockback that gets applied over a few frames
 	//TODO make some kind of damagetype
-	knockback = GetActorLocation() - DamageCauser->GetActorLocation();
-	knockback.Normalize();
-	knockback *= Damage * 500;
+//	UE_LOG(LogTemp, Warning, TEXT("DamageEvent ID: %d"), DamageEvent.GetTypeID());
+//	UE_LOG(LogTemp, Warning, TEXT("ClassEvent ID: %d"), DamageEvent.ClassID());
+	DamageEvent.DamageTypeClass.GetDefaultObject();
+	//TODO works because the class is derived from base Udamamgetype ?? is this the way to do it though??
+	if (Cast<UMyDamageType>(DamageEvent.DamageTypeClass.GetDefaultObject()))
+	{
+		knockback = GetActorLocation() - DamageCauser->GetActorLocation();
+		knockback.Normalize();
+		knockback *= Damage * 500;
+	}
 	if (ActualDamage > 0.f)
 	{
 		currentHP -= ActualDamage;

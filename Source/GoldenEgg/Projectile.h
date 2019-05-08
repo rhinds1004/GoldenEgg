@@ -43,17 +43,14 @@ public:
 	
 		// Who is firing the projectile
 		AMonsterBase* Firer;
-	
-		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Collision)
-			UDamageType* DamageType;
-
-		//TODO so how make damagetypes work
-		UPROPERTY(EditAnywhere)
-			TSubclassOf<UDamageType> KnockbackDamageType;
+		
+		UFUNCTION()
+			virtual int DoDamage(AActor* OtherActor, UPrimitiveComponent* OtherComp);
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
 
 public:	
 	// Called every frame

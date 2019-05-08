@@ -4,7 +4,7 @@
 	<ItemGroup>
 		<None Include="..\..\GoldenEgg.uproject" />
 		<Filter Include="Source">
-			<UniqueIdentifier>{58EA8704-ABD0-4C6F-A54C-0304684CE050}</UniqueIdentifier>
+			<UniqueIdentifier>{0A47551E-775E-498A-9DCD-B371877AA451}</UniqueIdentifier>
 		</Filter>
 		<None Include="..\..\Source\GoldenEgg.Target.cs">
 			<Filter>Source</Filter>
@@ -13,7 +13,7 @@
 			<Filter>Source</Filter>
 		</None >
 		<Filter Include="Config">
-			<UniqueIdentifier>{278EFC36-A1CC-4BEA-A3E8-FEB0A2E28237}</UniqueIdentifier>
+			<UniqueIdentifier>{5D939459-7927-4F7E-B6D1-68512181FAF0}</UniqueIdentifier>
 		</Filter>
 		<None Include="..\..\Config\DefaultEditor.ini">
 			<Filter>Config</Filter>
@@ -31,7 +31,7 @@
 			<Filter>Config</Filter>
 		</None >
 		<Filter Include="Source\GoldenEgg">
-			<UniqueIdentifier>{3A3DEAB5-9B14-4962-8DE2-43F6B7CF49C8}</UniqueIdentifier>
+			<UniqueIdentifier>{27FFA19C-9840-4887-93B6-900423D44E70}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="..\..\Source\GoldenEgg\Avatar.cpp">
 			<Filter>Source\GoldenEgg</Filter>
@@ -88,6 +88,12 @@
 			<Filter>Source\GoldenEgg</Filter>
 		</ClCompile >
 		<ClInclude Include="..\..\Source\GoldenEgg\MonsterBase.h">
+			<Filter>Source\GoldenEgg</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\GoldenEgg\MyDamageType.cpp">
+			<Filter>Source\GoldenEgg</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\GoldenEgg\MyDamageType.h">
 			<Filter>Source\GoldenEgg</Filter>
 		</ClInclude >
 		<ClCompile Include="..\..\Source\GoldenEgg\MyHUD.cpp">
