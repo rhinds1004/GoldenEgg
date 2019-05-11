@@ -13,8 +13,12 @@ UCLASS()
 class GOLDENEGG_API AMonsterAIController : public AAIController
 {
 	GENERATED_BODY()
+public:
+	//start following the player
+	void StartFollowingPlayer();
 	
 	
 	
-	
+
+
 };

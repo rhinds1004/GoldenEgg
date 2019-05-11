@@ -6,6 +6,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "Engine/SkeletalMeshSocket.h"
 #include "Components/SkeletalMeshComponent.h"
+#include "MonsterAIController.h"
 #include "Projectile.h"
 //#include "GameFramework/Character.h"
 
@@ -75,8 +76,10 @@ void AMonsterBase::Tick(float DeltaTime)
 	}
 	else
 	{
-		//Actually move the monster towards the player a bit
-		AddMovementInput(toPlayer, Speed*DeltaTime);
+		if (GetController() != nullptr)
+		{
+			Cast<AMonsterAIController>(GetController())->StartFollowingPlayer();
+		}
 	}
 }
 
