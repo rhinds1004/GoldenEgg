@@ -30,7 +30,7 @@ void AMonsterAIController::Possess(class APawn* InPawn)
 
 void AMonsterAIController::UnPossess()
 {
-	Super::UnPossess;
+	Super::UnPossess();
 
 	BehaviorTreeCmp->StopTree();
 }
