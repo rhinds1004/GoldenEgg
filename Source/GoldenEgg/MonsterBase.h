@@ -89,6 +89,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = MonsterProperties)
 		float MoveProjectileFwdAmount;
 
+	UPROPERTY(EditDefaultsOnly, Category = "AI")
+		class UBehaviorTree* BehaviorTree;
+
 	//checkss if an object is within in the monster's sight sphere. 
 	UFUNCTION(BlueprintCallable)
 	inline bool isInSightRange( float d)

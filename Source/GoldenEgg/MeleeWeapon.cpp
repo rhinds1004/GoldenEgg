@@ -22,8 +22,8 @@ AMeleeWeapon::AMeleeWeapon(const FObjectInitializer& ObjectInitializer) : Super(
 
 	ProxBox = ObjectInitializer.CreateDefaultSubobject<UBoxComponent>(this,TEXT("ProxBox"));
 	ProxBox->OnComponentBeginOverlap.AddDynamic(this, &AMeleeWeapon::Prox);
-	ProxBox->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepWorldTransform);
-
+	//ProxBox->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepWorldTransform);
+	ProxBox->SetupAttachment(RootComponent);
 	
 }
 

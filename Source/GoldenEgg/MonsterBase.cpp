@@ -47,9 +47,16 @@ void AMonsterBase::Tick(float DeltaTime)
 	//since it is avatar loc - get this actor loc. we are creating a vector from this actor to the avatar.
 	FVector toPlayer = avatar->GetActorLocation() - GetActorLocation();
 	float distanceToPlayer = toPlayer.Size();
+	AMonsterAIController* controller = Cast<AMonsterAIController>(GetController());
+
 	if (distanceToPlayer > SightSphere->GetScaledSphereRadius())
 	{
 		//If the player is out of sight, then enemy cannot chase
+		if (controller != nullptr)
+		{
+			controller->SetAttackRange(false);
+			controller->SetFollowRange(false);
+		}
 		return;
 	}
 	toPlayer /= distanceToPlayer; // normalizes the vector
@@ -61,6 +68,10 @@ void AMonsterBase::Tick(float DeltaTime)
 
 	if (isInAttackRange(distanceToPlayer))
 	{
+		if (controller != nullptr)
+		{
+			controller->SetAttackRange(true);
+		}
 		//Perform the attack
 		if (!TimeSinceLastStrike)
 		{
@@ -78,7 +89,9 @@ void AMonsterBase::Tick(float DeltaTime)
 	{
 		if (GetController() != nullptr)
 		{
-			Cast<AMonsterAIController>(GetController())->StartFollowingPlayer();
+			controller->SetAttackRange(false);
+			controller->SetFollowRange(true);
+			//Cast<AMonsterAIController>(GetController())->StartFollowingPlayer();
 		}
 	}
 }

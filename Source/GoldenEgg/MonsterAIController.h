@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "AIController.h"
+#include "BehaviorTree/BehaviorTreeComponent.h"
 #include "MonsterAIController.generated.h"
 
 /**
@@ -14,8 +15,18 @@ class GOLDENEGG_API AMonsterAIController : public AAIController
 {
 	GENERATED_BODY()
 public:
+	AMonsterAIController(const FObjectInitializer& ObjectInitializer);
+	virtual void Possess(class APawn* InPawn) override;
+	virtual void UnPossess() override;
+
+	UBehaviorTreeComponent* BehaviorTreeCmp;
+	UBlackboardComponent* BlackboardCmp;
+
 	//start following the player
 	void StartFollowingPlayer();
+	void SetFollowRange(bool val);
+	void SetAttackRange(bool val);
+
 	
 	
 	

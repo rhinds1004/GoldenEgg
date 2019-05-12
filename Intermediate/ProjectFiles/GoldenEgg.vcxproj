@@ -570,6 +570,10 @@
 		<None Include="..\..\Config\DefaultInput.ini" />
 		<ClCompile Include="..\..\Source\GoldenEgg\Avatar.cpp" />
 		<ClInclude Include="..\..\Source\GoldenEgg\Avatar.h" />
+		<ClCompile Include="..\..\Source\GoldenEgg\BTTask_Attack.cpp" />
+		<ClInclude Include="..\..\Source\GoldenEgg\BTTask_Attack.h" />
+		<ClCompile Include="..\..\Source\GoldenEgg\BTTask_FollowPlayer.cpp" />
+		<ClInclude Include="..\..\Source\GoldenEgg\BTTask_FollowPlayer.h" />
 		<ClCompile Include="..\..\Source\GoldenEgg\FireProjectile.cpp" />
 		<ClInclude Include="..\..\Source\GoldenEgg\FireProjectile.h" />
 		<ClCompile Include="..\..\Source\GoldenEgg\GameModeGoldenEgg.cpp" />
