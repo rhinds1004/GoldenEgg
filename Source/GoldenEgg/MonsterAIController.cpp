@@ -26,8 +26,6 @@ void AMonsterAIController::Possess(class APawn* InPawn)
 			BlackboardCmp->InitializeBlackboard(*Monster->BehaviorTree->BlackboardAsset);
 		}
 	}
-	BehaviorTreeCmp->StartTree(*Monster->BehaviorTree);
-	Possessed = Monster;
 }
 
 void AMonsterAIController::UnPossess()
@@ -54,41 +52,6 @@ void AMonsterAIController::SetAttackRange(bool val)
 {
 	BlackboardCmp->SetValueAsBool("IsInAttackRange", val);  //Needs to be the same as the key found in the blueprint of the blackboard
 }
-/*
-void AMonsterAIController::SetTimeSinceLastStrike(float val)
-{
-	if (this != nullptr)
-	{
-//		BlackboardCmp->SetValueAsFloat("TimeSinceLastStrike", val);
-	}
-}
-
-void AMonsterAIController::SetAttackTimeout(float val)
-{
-	if (this != nullptr)
-	{
-//		BlackboardCmp->SetValueAsFloat("AttackTimeout", val);
-	}
-}
-
-float AMonsterAIController::GetTimeSinceLastStrike()
-{
-	
-//	return BlackboardCmp->GetValueAsFloat("TimeSinceLastStrike");
-	return 0;
-}
-
-float AMonsterAIController::GetAttackTimeout()
-{
-//	return BlackboardCmp->GetValueAsFloat("AttackTimeout");
-	return 0;
-}
 
 
-void AMonsterAIController::StartAttackingPlayer()
-{
-//	Possessed->Attack(Cast<AActor>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0)));
-}
-
-*/
 
