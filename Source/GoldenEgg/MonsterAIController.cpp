@@ -26,6 +26,7 @@ void AMonsterAIController::Possess(class APawn* InPawn)
 			BlackboardCmp->InitializeBlackboard(*Monster->BehaviorTree->BlackboardAsset);
 		}
 	}
+	BehaviorTreeCmp->StartTree(*Monster->BehaviorTree);
 }
 
 void AMonsterAIController::UnPossess()
