@@ -14299,9 +14299,6 @@
 		<None Include="..\..\..\..\..\..\..\Program Files\Epic Games\UE_4.18\Engine\Source\ThirdParty\ADO\ADO.tps" />
 		<None Include="..\..\..\..\..\..\..\Program Files\Epic Games\UE_4.18\Engine\Source\ThirdParty\AMD\AMD_AGS\AGSlib.tps" />
 		<None Include="..\..\..\..\..\..\..\Program Files\Epic Games\UE_4.18\Engine\Source\ThirdParty\AMD\AMD_AGS\AMD_AGS.Build.cs" />
-		<None Include="..\..\..\..\..\..\..\Program Files\Epic Games\UE_4.18\Engine\Source\ThirdParty\Android\cxa_demangle\AndroidOpenSourceProject.tps" />
-		<None Include="..\..\..\..\..\..\..\Program Files\Epic Games\UE_4.18\Engine\Source\ThirdParty\Android\cxa_demangle\cxademangle.Build.cs" />
-		<None Include="..\..\..\..\..\..\..\Program Files\Epic Games\UE_4.18\Engine\Source\ThirdParty\Android\cxa_demangle\cxademangle.tps" />
 		<None Include="..\..\..\..\..\..\..\Program Files\Epic Games\UE_4.18\Engine\Source\ThirdParty\ANGLE\ANGLE.Build.cs" />
 		<None Include="..\..\..\..\..\..\..\Program Files\Epic Games\UE_4.18\Engine\Source\ThirdParty\ANGLE\ANGLE.tps" />
 		<None Include="..\..\..\..\..\..\..\Program Files\Epic Games\UE_4.18\Engine\Source\ThirdParty\CEF3\CEF3.build.cs" />
@@ -14353,8 +14350,6 @@
 		<None Include="..\..\..\..\..\..\..\Program Files\Epic Games\UE_4.18\Engine\Source\ThirdParty\IntelISPCTexComp\ISPCTextureCompressor.tps" />
 		<None Include="..\..\..\..\..\..\..\Program Files\Epic Games\UE_4.18\Engine\Source\ThirdParty\IntelTBB\IntelTBB.Build.cs" />
 		<None Include="..\..\..\..\..\..\..\Program Files\Epic Games\UE_4.18\Engine\Source\ThirdParty\IntelTBB\IntelTBB.tps" />
-		<None Include="..\..\..\..\..\..\..\Program Files\Epic Games\UE_4.18\Engine\Source\ThirdParty\IOS\Bolts\Bolts.Build.cs" />
-		<None Include="..\..\..\..\..\..\..\Program Files\Epic Games\UE_4.18\Engine\Source\ThirdParty\IOS\Bolts\Bolts.tps" />
 		<None Include="..\..\..\..\..\..\..\Program Files\Epic Games\UE_4.18\Engine\Source\ThirdParty\jemalloc\jemalloc.Build.cs" />
 		<None Include="..\..\..\..\..\..\..\Program Files\Epic Games\UE_4.18\Engine\Source\ThirdParty\jemalloc\jemalloc.tps" />
 		<None Include="..\..\..\..\..\..\..\Program Files\Epic Games\UE_4.18\Engine\Source\ThirdParty\Kiss_FFT\KissFFT.tps" />

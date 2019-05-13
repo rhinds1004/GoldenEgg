@@ -18,38 +18,6 @@
 			<Configuration>DebugGame_Editor</Configuration>
 			<Platform>x64</Platform>
 		</ProjectConfiguration>
-		<ProjectConfiguration Include="IOS_DebugGame_Game|Win32">
-			<Configuration>IOS_DebugGame_Game</Configuration>
-			<Platform>Win32</Platform>
-		</ProjectConfiguration>
-		<ProjectConfiguration Include="IOS_DebugGame_Game|x64">
-			<Configuration>IOS_DebugGame_Game</Configuration>
-			<Platform>x64</Platform>
-		</ProjectConfiguration>
-		<ProjectConfiguration Include="IOS_DebugGame_Editor|Win32">
-			<Configuration>IOS_DebugGame_Editor</Configuration>
-			<Platform>Win32</Platform>
-		</ProjectConfiguration>
-		<ProjectConfiguration Include="IOS_DebugGame_Editor|x64">
-			<Configuration>IOS_DebugGame_Editor</Configuration>
-			<Platform>x64</Platform>
-		</ProjectConfiguration>
-		<ProjectConfiguration Include="HTML5_DebugGame_Game|Win32">
-			<Configuration>HTML5_DebugGame_Game</Configuration>
-			<Platform>Win32</Platform>
-		</ProjectConfiguration>
-		<ProjectConfiguration Include="HTML5_DebugGame_Game|x64">
-			<Configuration>HTML5_DebugGame_Game</Configuration>
-			<Platform>x64</Platform>
-		</ProjectConfiguration>
-		<ProjectConfiguration Include="HTML5_DebugGame_Editor|Win32">
-			<Configuration>HTML5_DebugGame_Editor</Configuration>
-			<Platform>Win32</Platform>
-		</ProjectConfiguration>
-		<ProjectConfiguration Include="HTML5_DebugGame_Editor|x64">
-			<Configuration>HTML5_DebugGame_Editor</Configuration>
-			<Platform>x64</Platform>
-		</ProjectConfiguration>
 		<ProjectConfiguration Include="Development_Game|Win32">
 			<Configuration>Development_Game</Configuration>
 			<Platform>Win32</Platform>
@@ -66,60 +34,12 @@
 			<Configuration>Development_Editor</Configuration>
 			<Platform>x64</Platform>
 		</ProjectConfiguration>
-		<ProjectConfiguration Include="IOS_Development_Game|Win32">
-			<Configuration>IOS_Development_Game</Configuration>
-			<Platform>Win32</Platform>
-		</ProjectConfiguration>
-		<ProjectConfiguration Include="IOS_Development_Game|x64">
-			<Configuration>IOS_Development_Game</Configuration>
-			<Platform>x64</Platform>
-		</ProjectConfiguration>
-		<ProjectConfiguration Include="IOS_Development_Editor|Win32">
-			<Configuration>IOS_Development_Editor</Configuration>
-			<Platform>Win32</Platform>
-		</ProjectConfiguration>
-		<ProjectConfiguration Include="IOS_Development_Editor|x64">
-			<Configuration>IOS_Development_Editor</Configuration>
-			<Platform>x64</Platform>
-		</ProjectConfiguration>
-		<ProjectConfiguration Include="HTML5_Development_Game|Win32">
-			<Configuration>HTML5_Development_Game</Configuration>
-			<Platform>Win32</Platform>
-		</ProjectConfiguration>
-		<ProjectConfiguration Include="HTML5_Development_Game|x64">
-			<Configuration>HTML5_Development_Game</Configuration>
-			<Platform>x64</Platform>
-		</ProjectConfiguration>
-		<ProjectConfiguration Include="HTML5_Development_Editor|Win32">
-			<Configuration>HTML5_Development_Editor</Configuration>
-			<Platform>Win32</Platform>
-		</ProjectConfiguration>
-		<ProjectConfiguration Include="HTML5_Development_Editor|x64">
-			<Configuration>HTML5_Development_Editor</Configuration>
-			<Platform>x64</Platform>
-		</ProjectConfiguration>
 		<ProjectConfiguration Include="Shipping_Game|Win32">
 			<Configuration>Shipping_Game</Configuration>
 			<Platform>Win32</Platform>
 		</ProjectConfiguration>
 		<ProjectConfiguration Include="Shipping_Game|x64">
 			<Configuration>Shipping_Game</Configuration>
-			<Platform>x64</Platform>
-		</ProjectConfiguration>
-		<ProjectConfiguration Include="IOS_Shipping_Game|Win32">
-			<Configuration>IOS_Shipping_Game</Configuration>
-			<Platform>Win32</Platform>
-		</ProjectConfiguration>
-		<ProjectConfiguration Include="IOS_Shipping_Game|x64">
-			<Configuration>IOS_Shipping_Game</Configuration>
-			<Platform>x64</Platform>
-		</ProjectConfiguration>
-		<ProjectConfiguration Include="HTML5_Shipping_Game|Win32">
-			<Configuration>HTML5_Shipping_Game</Configuration>
-			<Platform>Win32</Platform>
-		</ProjectConfiguration>
-		<ProjectConfiguration Include="HTML5_Shipping_Game|x64">
-			<Configuration>HTML5_Shipping_Game</Configuration>
 			<Platform>x64</Platform>
 		</ProjectConfiguration>
 	</ItemGroup>
@@ -148,38 +68,6 @@
 		<ConfigurationType>Makefile</ConfigurationType>
 		<PlatformToolset>v140</PlatformToolset>
 	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='IOS_DebugGame_Game|Win32'" Label="Configuration">
-		<ConfigurationType>Makefile</ConfigurationType>
-		<PlatformToolset>v140</PlatformToolset>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='IOS_DebugGame_Game|x64'" Label="Configuration">
-		<ConfigurationType>Makefile</ConfigurationType>
-		<PlatformToolset>v140</PlatformToolset>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='IOS_DebugGame_Editor|Win32'" Label="Configuration">
-		<ConfigurationType>Makefile</ConfigurationType>
-		<PlatformToolset>v140</PlatformToolset>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='IOS_DebugGame_Editor|x64'" Label="Configuration">
-		<ConfigurationType>Makefile</ConfigurationType>
-		<PlatformToolset>v140</PlatformToolset>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_DebugGame_Game|Win32'" Label="Configuration">
-		<ConfigurationType>Makefile</ConfigurationType>
-		<PlatformToolset>v140</PlatformToolset>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_DebugGame_Game|x64'" Label="Configuration">
-		<ConfigurationType>Makefile</ConfigurationType>
-		<PlatformToolset>v140</PlatformToolset>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_DebugGame_Editor|Win32'" Label="Configuration">
-		<ConfigurationType>Makefile</ConfigurationType>
-		<PlatformToolset>v140</PlatformToolset>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_DebugGame_Editor|x64'" Label="Configuration">
-		<ConfigurationType>Makefile</ConfigurationType>
-		<PlatformToolset>v140</PlatformToolset>
-	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Development_Game|Win32'" Label="Configuration">
 		<ConfigurationType>Makefile</ConfigurationType>
 		<PlatformToolset>v140</PlatformToolset>
@@ -196,59 +84,11 @@
 		<ConfigurationType>Makefile</ConfigurationType>
 		<PlatformToolset>v140</PlatformToolset>
 	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='IOS_Development_Game|Win32'" Label="Configuration">
-		<ConfigurationType>Makefile</ConfigurationType>
-		<PlatformToolset>v140</PlatformToolset>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='IOS_Development_Game|x64'" Label="Configuration">
-		<ConfigurationType>Makefile</ConfigurationType>
-		<PlatformToolset>v140</PlatformToolset>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='IOS_Development_Editor|Win32'" Label="Configuration">
-		<ConfigurationType>Makefile</ConfigurationType>
-		<PlatformToolset>v140</PlatformToolset>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='IOS_Development_Editor|x64'" Label="Configuration">
-		<ConfigurationType>Makefile</ConfigurationType>
-		<PlatformToolset>v140</PlatformToolset>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_Development_Game|Win32'" Label="Configuration">
-		<ConfigurationType>Makefile</ConfigurationType>
-		<PlatformToolset>v140</PlatformToolset>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_Development_Game|x64'" Label="Configuration">
-		<ConfigurationType>Makefile</ConfigurationType>
-		<PlatformToolset>v140</PlatformToolset>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_Development_Editor|Win32'" Label="Configuration">
-		<ConfigurationType>Makefile</ConfigurationType>
-		<PlatformToolset>v140</PlatformToolset>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_Development_Editor|x64'" Label="Configuration">
-		<ConfigurationType>Makefile</ConfigurationType>
-		<PlatformToolset>v140</PlatformToolset>
-	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Shipping_Game|Win32'" Label="Configuration">
 		<ConfigurationType>Makefile</ConfigurationType>
 		<PlatformToolset>v140</PlatformToolset>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Shipping_Game|x64'" Label="Configuration">
-		<ConfigurationType>Makefile</ConfigurationType>
-		<PlatformToolset>v140</PlatformToolset>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='IOS_Shipping_Game|Win32'" Label="Configuration">
-		<ConfigurationType>Makefile</ConfigurationType>
-		<PlatformToolset>v140</PlatformToolset>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='IOS_Shipping_Game|x64'" Label="Configuration">
-		<ConfigurationType>Makefile</ConfigurationType>
-		<PlatformToolset>v140</PlatformToolset>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_Shipping_Game|Win32'" Label="Configuration">
-		<ConfigurationType>Makefile</ConfigurationType>
-		<PlatformToolset>v140</PlatformToolset>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_Shipping_Game|x64'" Label="Configuration">
 		<ConfigurationType>Makefile</ConfigurationType>
 		<PlatformToolset>v140</PlatformToolset>
 	</PropertyGroup>
@@ -317,62 +157,6 @@
 		<NMakeCleanCommandLine>"C:\Program Files\Epic Games\UE_4.18\Engine\Build\BatchFiles\Clean.bat" GoldenEggEditor Win64 DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Program Files\Epic Games\UE_4.18\Engine\Binaries\Win64\UE4Editor.exe</NMakeOutput>
 	</PropertyGroup>
-	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='IOS_DebugGame_Game|Win32'" Label="PropertySheets">
-		<Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-	</ImportGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='IOS_DebugGame_Game|Win32'">
-		<IncludePath />
-		<ReferencePath />
-		<LibraryPath />
-		<LibraryWPath />
-		<SourcePath />
-		<ExcludePath />
-		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
-		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>"C:\Program Files\Epic Games\UE_4.18\Engine\Build\BatchFiles\Build.bat" GoldenEgg IOS DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>"C:\Program Files\Epic Games\UE_4.18\Engine\Build\BatchFiles\Rebuild.bat" GoldenEgg IOS DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>"C:\Program Files\Epic Games\UE_4.18\Engine\Build\BatchFiles\Clean.bat" GoldenEgg IOS DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
-		<NMakeOutput>..\..\Binaries\IOS\GoldenEgg-IOS-DebugGame</NMakeOutput>
-	</PropertyGroup>
-	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='IOS_DebugGame_Editor|Win32'" Label="PropertySheets">
-		<Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-	</ImportGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='IOS_DebugGame_Editor|Win32'">
-		<OutDir>C:\Program Files\Epic Games\UE_4.18\Engine\Intermediate\Build\Unused\</OutDir>
-		<IntDir>C:\Program Files\Epic Games\UE_4.18\Engine\Intermediate\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>@echo IOS is not a supported platform for GoldenEggEditor. Valid platforms are Win64.</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>@echo IOS is not a supported platform for GoldenEggEditor. Valid platforms are Win64.</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>@echo IOS is not a supported platform for GoldenEggEditor. Valid platforms are Win64.</NMakeCleanCommandLine>
-		<NMakeOutput/>
-	</PropertyGroup>
-	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_DebugGame_Game|Win32'" Label="PropertySheets">
-		<Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-	</ImportGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_DebugGame_Game|Win32'">
-		<IncludePath />
-		<ReferencePath />
-		<LibraryPath />
-		<LibraryWPath />
-		<SourcePath />
-		<ExcludePath />
-		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
-		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>"C:\Program Files\Epic Games\UE_4.18\Engine\Build\BatchFiles\Build.bat" GoldenEgg HTML5 DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>"C:\Program Files\Epic Games\UE_4.18\Engine\Build\BatchFiles\Rebuild.bat" GoldenEgg HTML5 DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>"C:\Program Files\Epic Games\UE_4.18\Engine\Build\BatchFiles\Clean.bat" GoldenEgg HTML5 DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
-		<NMakeOutput>..\..\Binaries\HTML5\GoldenEgg-HTML5-DebugGame.js</NMakeOutput>
-	</PropertyGroup>
-	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_DebugGame_Editor|Win32'" Label="PropertySheets">
-		<Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-	</ImportGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_DebugGame_Editor|Win32'">
-		<OutDir>C:\Program Files\Epic Games\UE_4.18\Engine\Intermediate\Build\Unused\</OutDir>
-		<IntDir>C:\Program Files\Epic Games\UE_4.18\Engine\Intermediate\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>@echo HTML5 is not a supported platform for GoldenEggEditor. Valid platforms are Win64.</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>@echo HTML5 is not a supported platform for GoldenEggEditor. Valid platforms are Win64.</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>@echo HTML5 is not a supported platform for GoldenEggEditor. Valid platforms are Win64.</NMakeCleanCommandLine>
-		<NMakeOutput/>
-	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Development_Game|Win32'" Label="PropertySheets">
 		<Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
 	</ImportGroup>
@@ -435,62 +219,6 @@
 		<NMakeCleanCommandLine>"C:\Program Files\Epic Games\UE_4.18\Engine\Build\BatchFiles\Clean.bat" GoldenEggEditor Win64 Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Program Files\Epic Games\UE_4.18\Engine\Binaries\Win64\UE4Editor.exe</NMakeOutput>
 	</PropertyGroup>
-	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='IOS_Development_Game|Win32'" Label="PropertySheets">
-		<Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-	</ImportGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='IOS_Development_Game|Win32'">
-		<IncludePath />
-		<ReferencePath />
-		<LibraryPath />
-		<LibraryWPath />
-		<SourcePath />
-		<ExcludePath />
-		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
-		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>"C:\Program Files\Epic Games\UE_4.18\Engine\Build\BatchFiles\Build.bat" GoldenEgg IOS Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>"C:\Program Files\Epic Games\UE_4.18\Engine\Build\BatchFiles\Rebuild.bat" GoldenEgg IOS Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>"C:\Program Files\Epic Games\UE_4.18\Engine\Build\BatchFiles\Clean.bat" GoldenEgg IOS Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
-		<NMakeOutput>..\..\Binaries\IOS\GoldenEgg</NMakeOutput>
-	</PropertyGroup>
-	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='IOS_Development_Editor|Win32'" Label="PropertySheets">
-		<Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-	</ImportGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='IOS_Development_Editor|Win32'">
-		<OutDir>C:\Program Files\Epic Games\UE_4.18\Engine\Intermediate\Build\Unused\</OutDir>
-		<IntDir>C:\Program Files\Epic Games\UE_4.18\Engine\Intermediate\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>@echo IOS is not a supported platform for GoldenEggEditor. Valid platforms are Win64.</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>@echo IOS is not a supported platform for GoldenEggEditor. Valid platforms are Win64.</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>@echo IOS is not a supported platform for GoldenEggEditor. Valid platforms are Win64.</NMakeCleanCommandLine>
-		<NMakeOutput/>
-	</PropertyGroup>
-	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_Development_Game|Win32'" Label="PropertySheets">
-		<Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-	</ImportGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_Development_Game|Win32'">
-		<IncludePath />
-		<ReferencePath />
-		<LibraryPath />
-		<LibraryWPath />
-		<SourcePath />
-		<ExcludePath />
-		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
-		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>"C:\Program Files\Epic Games\UE_4.18\Engine\Build\BatchFiles\Build.bat" GoldenEgg HTML5 Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>"C:\Program Files\Epic Games\UE_4.18\Engine\Build\BatchFiles\Rebuild.bat" GoldenEgg HTML5 Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>"C:\Program Files\Epic Games\UE_4.18\Engine\Build\BatchFiles\Clean.bat" GoldenEgg HTML5 Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
-		<NMakeOutput>..\..\Binaries\HTML5\GoldenEgg.js</NMakeOutput>
-	</PropertyGroup>
-	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_Development_Editor|Win32'" Label="PropertySheets">
-		<Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-	</ImportGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_Development_Editor|Win32'">
-		<OutDir>C:\Program Files\Epic Games\UE_4.18\Engine\Intermediate\Build\Unused\</OutDir>
-		<IntDir>C:\Program Files\Epic Games\UE_4.18\Engine\Intermediate\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>@echo HTML5 is not a supported platform for GoldenEggEditor. Valid platforms are Win64.</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>@echo HTML5 is not a supported platform for GoldenEggEditor. Valid platforms are Win64.</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>@echo HTML5 is not a supported platform for GoldenEggEditor. Valid platforms are Win64.</NMakeCleanCommandLine>
-		<NMakeOutput/>
-	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Shipping_Game|Win32'" Label="PropertySheets">
 		<Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
 	</ImportGroup>
@@ -524,40 +252,6 @@
 		<NMakeReBuildCommandLine>"C:\Program Files\Epic Games\UE_4.18\Engine\Build\BatchFiles\Rebuild.bat" GoldenEgg Win64 Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
 		<NMakeCleanCommandLine>"C:\Program Files\Epic Games\UE_4.18\Engine\Build\BatchFiles\Clean.bat" GoldenEgg Win64 Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>..\..\Binaries\Win64\GoldenEgg-Win64-Shipping.exe</NMakeOutput>
-	</PropertyGroup>
-	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='IOS_Shipping_Game|Win32'" Label="PropertySheets">
-		<Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-	</ImportGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='IOS_Shipping_Game|Win32'">
-		<IncludePath />
-		<ReferencePath />
-		<LibraryPath />
-		<LibraryWPath />
-		<SourcePath />
-		<ExcludePath />
-		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
-		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>"C:\Program Files\Epic Games\UE_4.18\Engine\Build\BatchFiles\Build.bat" GoldenEgg IOS Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>"C:\Program Files\Epic Games\UE_4.18\Engine\Build\BatchFiles\Rebuild.bat" GoldenEgg IOS Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>"C:\Program Files\Epic Games\UE_4.18\Engine\Build\BatchFiles\Clean.bat" GoldenEgg IOS Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
-		<NMakeOutput>..\..\Binaries\IOS\GoldenEgg-IOS-Shipping</NMakeOutput>
-	</PropertyGroup>
-	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_Shipping_Game|Win32'" Label="PropertySheets">
-		<Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-	</ImportGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_Shipping_Game|Win32'">
-		<IncludePath />
-		<ReferencePath />
-		<LibraryPath />
-		<LibraryWPath />
-		<SourcePath />
-		<ExcludePath />
-		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
-		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>"C:\Program Files\Epic Games\UE_4.18\Engine\Build\BatchFiles\Build.bat" GoldenEgg HTML5 Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>"C:\Program Files\Epic Games\UE_4.18\Engine\Build\BatchFiles\Rebuild.bat" GoldenEgg HTML5 Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>"C:\Program Files\Epic Games\UE_4.18\Engine\Build\BatchFiles\Clean.bat" GoldenEgg HTML5 Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
-		<NMakeOutput>..\..\Binaries\HTML5\GoldenEgg-HTML5-Shipping.js</NMakeOutput>
 	</PropertyGroup>
 	<ItemGroup>
 		<None Include="..\..\GoldenEgg.uproject" />

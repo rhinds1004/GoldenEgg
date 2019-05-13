@@ -22,8 +22,9 @@ AMonsterBase::AMonsterBase(const FObjectInitializer& ObjectInitializer) : Super(
 	Experience = 0;
 	BPLoot = NULL;
 	BaseAttackDamage = 1;
-	AttackTimeout = 1.5f;
-	TimeSinceLastStrike = 0;
+
+
+
 
 	SightSphere = ObjectInitializer.CreateDefaultSubobject<USphereComponent>(this, TEXT("SightSphere"));
 	SightSphere->SetupAttachment(RootComponent);
@@ -72,17 +73,19 @@ void AMonsterBase::Tick(float DeltaTime)
 		{
 			controller->SetAttackRange(true);
 		}
+		/*
 		//Perform the attack
-		if (!TimeSinceLastStrike)
+		if (!controller->GetTimeSinceLastStrike())
 		{
 			Attack(avatar);
 		}
-
-		TimeSinceLastStrike += DeltaTime;
-		if (TimeSinceLastStrike > AttackTimeout)
+		*/
+/*		controller->SetTimeSinceLastStrike(controller->GetTimeSinceLastStrike() + DeltaTime);
+		if (controller->GetTimeSinceLastStrike() > controller->GetAttackTimeout())
 		{
-			TimeSinceLastStrike = 0;
+			controller->SetTimeSinceLastStrike(0);
 		}
+		*/
 		return;
 	}
 	else
@@ -120,6 +123,9 @@ Super::PostInitializeComponents();
 			MeleeWeapon->WeaponHolder = this;
 		}
 	}
+	AMonsterAIController* controller = Cast<AMonsterAIController>(GetController());
+//	controller->SetAttackTimeout(1.5f);
+	//controller->SetTimeSinceLastStrike(0);
 	
 }
 

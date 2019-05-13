@@ -49,7 +49,7 @@ public:
 	//base amount of damage monster attacks do
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = MonsterProperties)
 		float BaseAttackDamage;
-
+	/*
 	//Amount of time needed for monster to rest in between attacks
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = MonsterProperties)
 		float AttackTimeout;
@@ -57,6 +57,7 @@ public:
 	//Time since last monster's attack. Blueprint readable only
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = MonsterProperties)
 	float TimeSinceLastStrike;
+	*/
 
 	//Range of monster's sight
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = Collision)

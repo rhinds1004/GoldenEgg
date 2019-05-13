@@ -4,7 +4,7 @@
 	<ItemGroup>
 		<None Include="..\..\GoldenEgg.uproject" />
 		<Filter Include="Source">
-			<UniqueIdentifier>{1A43F059-604F-468E-8BC7-8FEF04A71D42}</UniqueIdentifier>
+			<UniqueIdentifier>{B10FF222-9BB7-4E40-A8C0-BB30D265A8FA}</UniqueIdentifier>
 		</Filter>
 		<None Include="..\..\Source\GoldenEgg.Target.cs">
 			<Filter>Source</Filter>
@@ -13,7 +13,7 @@
 			<Filter>Source</Filter>
 		</None >
 		<Filter Include="Config">
-			<UniqueIdentifier>{8EA37A96-802D-4735-AB99-81910A269D6F}</UniqueIdentifier>
+			<UniqueIdentifier>{FABE6BB7-EE32-49CA-A563-E60CF77456F0}</UniqueIdentifier>
 		</Filter>
 		<None Include="..\..\Config\DefaultEditor.ini">
 			<Filter>Config</Filter>
@@ -31,7 +31,7 @@
 			<Filter>Config</Filter>
 		</None >
 		<Filter Include="Source\GoldenEgg">
-			<UniqueIdentifier>{2A0CDBE3-5A89-4C2D-84CD-A4A9BBBCDF48}</UniqueIdentifier>
+			<UniqueIdentifier>{552287AB-A506-47EE-90AF-3B526000E8CD}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="..\..\Source\GoldenEgg\Avatar.cpp">
 			<Filter>Source\GoldenEgg</Filter>

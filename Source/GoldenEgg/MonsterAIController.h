@@ -21,12 +21,16 @@ public:
 
 	UBehaviorTreeComponent* BehaviorTreeCmp;
 	UBlackboardComponent* BlackboardCmp;
-
+	class AMonsterBase* Possessed;
 	//start following the player
 	void StartFollowingPlayer();
 	void SetFollowRange(bool val);
 	void SetAttackRange(bool val);
-
+/*	void SetTimeSinceLastStrike(float val);
+	void SetAttackTimeout(float val);
+	float GetTimeSinceLastStrike();
+	float GetAttackTimeout();
+	*/
 	
 	
 	
