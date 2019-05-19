@@ -6,6 +6,8 @@
 #include "MyHUD.h"
 #include "MyDamageType.h"
 #include "PickUpItem.h"
+#include "Spell.h"
+#include "Engine/World.h"
 
 
 // Sets default values
@@ -19,7 +21,7 @@ AAvatar::AAvatar(const FObjectInitializer& ObjectInitializer)
 
 	//ObjectInitializer.CreateDefaultSubobject<UInventory>(this, TEXT("Storage"));
 	myInventory = CreateDefaultSubobject<UInventory>( TEXT("Storage"));
-	
+	IsDead = false;
 	//AddOwnedComponent(CreateDefaultSubobject<UInventory>(this, TEXT("Storage")));
 }
 
@@ -27,6 +29,7 @@ AAvatar::AAvatar(const FObjectInitializer& ObjectInitializer)
 void AAvatar::BeginPlay()
 {
 	Super::BeginPlay();
+	
 }
 
 // Called every frame
@@ -53,6 +56,7 @@ void AAvatar::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	PlayerInputComponent->BindAxis("LookY", this, &AAvatar::LookY);
 	PlayerInputComponent->BindAction("Inventory", IE_Pressed, this, &AAvatar::ToggleInventory);
 	PlayerInputComponent->BindAction("MouseClickedLMB", IE_Pressed, this, &AAvatar::MouseClicked);
+	PlayerInputComponent->BindAction("MouseClickedRMB", IE_Pressed, this, &AAvatar::MouseRightClicked);
 
 }
 
@@ -129,6 +133,16 @@ void AAvatar::MouseClicked()
 	hud->MouseClicked();
 }
 
+void AAvatar::MouseRightClicked()
+{
+	
+		APlayerController* PController = GetWorld()->GetFirstPlayerController();
+		AMyHUD* hud = Cast<AMyHUD>(PController->GetHUD());
+		hud->MouseRightClicked();
+	
+}
+
+
 float AAvatar::GetCurrentHp()
 {
 	
@@ -162,6 +176,7 @@ void AAvatar::PickUp(APickUpItem* item)
 			hud->addWidget(Widget(Icon(fs, tex)));
 		}
 	}
+	Spells.Add(item->Name, item->Spell);
 }
 
 /*Toggles if the player's inventory is to be displayed or not. */
@@ -196,7 +211,9 @@ void AAvatar::ToggleInventory()
 			if (it->Value->Icon)
 			{
 				tex = it->Value->Icon;
-				hud->addWidget(Widget(Icon(fs, tex)));
+				Widget w(Widget(Icon(fs, tex)));
+				w.bpSpell = Spells[it->Key]; //gets the key of the current item and looks for it in the spell map. 
+				hud->addWidget(w);
 			}
 		}
 	}
@@ -223,11 +240,31 @@ float AAvatar::TakeDamage(float Damage, FDamageEvent const & DamageEvent, AContr
 	if (ActualDamage > 0.f)
 	{
 		currentHP -= ActualDamage;
+		if (currentHP <= 0.f)
+		{
+			IsDead = true;
+		}
+		else
+		{
+			IsDead = false;
+		}
 	}
 	return AActor::TakeDamage(Damage, DamageEvent, EventInstigator, DamageCauser);
 }
 
+void AAvatar::CastSpell(UClass* bpSpell)
+{
+	ASpell* spell = GetWorld()->SpawnActor<ASpell>(bpSpell, FVector(0), FRotator(0));
 
+	if (spell)
+	{
+		spell->SetCaster(this);
+	}
+	else
+	{
+		GEngine->AddOnScreenDebugMessage(1, 5.f, FColor::Yellow, FString("can't cast ") + bpSpell->GetName());
+	}
+}
 /*
 void AAvatar::ToggleInventory()
 {

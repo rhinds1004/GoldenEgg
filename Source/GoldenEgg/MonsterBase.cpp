@@ -165,3 +165,27 @@ void AMonsterBase::Attack(AActor * thing)
 	}
 }
 
+//determine damage done and then subtract that amount from current hp
+float AMonsterBase::TakeDamage(float Damage, FDamageEvent const & DamageEvent, AController * EventInstigator, AActor * DamageCauser)
+{
+	// Call the base class - this will tell us how much damage to apply  
+	const float ActualDamage = Super::TakeDamage(Damage, DamageEvent, EventInstigator, DamageCauser);
+	//add some knockback that gets applied over a few frames
+	//TODO make some kind of damagetype
+	//	UE_LOG(LogTemp, Warning, TEXT("DamageEvent ID: %d"), DamageEvent.GetTypeID());
+	//	UE_LOG(LogTemp, Warning, TEXT("ClassEvent ID: %d"), DamageEvent.ClassID());
+	//DamageEvent.DamageTypeClass.GetDefaultObject();
+	//TODO works because the class is derived from base Udamamgetype ?? is this the way to do it though??
+	/*if (Cast<UMyDamageType>(DamageEvent.DamageTypeClass.GetDefaultObject()))
+	{
+		knockback = GetActorLocation() - DamageCauser->GetActorLocation();
+		knockback.Normalize();
+		knockback *= Damage * 500;
+	}
+	*/
+	if (ActualDamage > 0.f)
+	{
+		HitPoints -= ActualDamage;
+	}
+	return AActor::TakeDamage(Damage, DamageEvent, EventInstigator, DamageCauser);
+}

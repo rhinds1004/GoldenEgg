@@ -29,6 +29,10 @@ public:
 	//Icon that represents the object in the UI
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Item)
 		UTexture2D* Icon;
+	//If this item casts a spell when used, set it here
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Item)
+		UClass* Spell;
+
 	UFUNCTION(BlueprintNativeEvent, Category = Collision)
 		void Prox(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 		virtual int Prox_Implementation(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);

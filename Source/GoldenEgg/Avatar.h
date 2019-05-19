@@ -37,7 +37,8 @@ public:
 
 	UPROPERTY()
 		UInventory* myInventory;
-
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Avatar stats")
+		bool IsDead;
 
 									 //Icons for the items in the backpack
 //	UPROPERTY()
@@ -62,6 +63,8 @@ public:
 		void LookY(float amt);
 	UFUNCTION()
 		void MouseClicked();
+	UFUNCTION()
+	void MouseRightClicked();
 
 	//Avatar status
 	UFUNCTION()
@@ -69,6 +72,7 @@ public:
 	UFUNCTION()
 		float GetMaxHp();
 
+	
 
 	//Avatar actions
 //	UFUNCTION()
@@ -76,6 +80,7 @@ public:
 //	UFUNCTION()
 		void ToggleInventory();
 
+		void CastSpell(UClass * bpSpell);
 	
 
 private:
@@ -89,6 +94,14 @@ private:
 	UPROPERTY()
 		TArray<APickUpItem*> inventoryList;
 	
+	//holds information of what spells owned by this actor
+	UPROPERTY()
+		TMap<FString, UClass*> Spells;
+
+
+
 	UFUNCTION()
 		virtual float TakeDamage(float Damage, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, class AActor* DamageCauser) override;
+	
+	
 };

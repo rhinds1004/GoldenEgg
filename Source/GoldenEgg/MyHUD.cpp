@@ -119,7 +119,7 @@ void AMyHUD::DrawWidgets()
 	float widgetX = 0;
 	float widgetY = 0;
 	FVector2D start(200, 200);
-	if (Avatar->myInventory->inventoryShowing)
+/*	if (Avatar->myInventory->inventoryShowing)
 	{
 		for (int j = 0; j < Avatar->myInventory->slotTotal; j++)
 		{
@@ -133,7 +133,7 @@ void AMyHUD::DrawWidgets()
 				widgetY += 112;
 			}
 		}
-	}
+	} */
 	for (int i = 0; i < widgets.Num(); i++)
 	{
 		DrawTexture(widgets[i].icon.tex, widgets[i].pos.X, widgets[i].pos.Y, widgets[i].size.X, widgets[i].size.Y, 0, 0, 1, 1);
@@ -179,4 +179,24 @@ void AMyHUD::MouseMoved()
 	}
 
 	lastMouse = thisMouse;
+}
+
+void AMyHUD::MouseRightClicked()
+{
+	FVector2D mouse;
+	APlayerController* PController = GetWorld()->GetFirstPlayerController();
+	PController->GetMousePosition(mouse.X, mouse.Y);
+	for (int i = 0; i < widgets.Num(); i++)
+	{
+		if (widgets[i].hit(mouse))
+		{
+			if (AAvatar* avatar = Cast<AAvatar>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0)))
+			{
+				if (widgets[i].bpSpell)
+				{
+					avatar->CastSpell(widgets[i].bpSpell);
+				}
+			}
+		}
+	}
 }

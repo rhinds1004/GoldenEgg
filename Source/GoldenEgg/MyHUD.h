@@ -27,6 +27,7 @@ struct Icon
 struct Widget
 {
 	Icon icon;
+	UClass* bpSpell;
 	FVector2D pos, size;
 	Widget(Icon iIcon)
 	{
@@ -115,6 +116,8 @@ public:
 	void MouseClicked();
 	UFUNCTION()
 	void MouseMoved();
+
+	void MouseRightClicked();
 
 	//holds screen dimensions
 	FVector2D ViewportSize;
