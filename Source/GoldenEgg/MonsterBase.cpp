@@ -73,13 +73,17 @@ void AMonsterBase::Tick(float DeltaTime)
 		{
 			controller->SetAttackRange(true);
 		}
-		/*
+		
 		//Perform the attack
-		if (!controller->GetTimeSinceLastStrike())
+		if (!TimeSinceLastStrike)
 		{
 			Attack(avatar);
 		}
-		*/
+		TimeSinceLastStrike += DeltaTime;
+		if (TimeSinceLastStrike > AttackTimeout)
+		{
+			TimeSinceLastStrike = 0;
+		}
 /*		controller->SetTimeSinceLastStrike(controller->GetTimeSinceLastStrike() + DeltaTime);
 		if (controller->GetTimeSinceLastStrike() > controller->GetAttackTimeout())
 		{

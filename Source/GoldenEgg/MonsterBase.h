@@ -49,7 +49,7 @@ public:
 	//base amount of damage monster attacks do
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = MonsterProperties)
 		float BaseAttackDamage;
-	/*
+	
 	//Amount of time needed for monster to rest in between attacks
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = MonsterProperties)
 		float AttackTimeout;
@@ -57,7 +57,7 @@ public:
 	//Time since last monster's attack. Blueprint readable only
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = MonsterProperties)
 	float TimeSinceLastStrike;
-	*/
+	
 
 	//Range of monster's sight
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = Collision)
@@ -97,14 +97,22 @@ public:
 	UFUNCTION(BlueprintCallable)
 	inline bool isInSightRange( float d)
 	{
-		return d < SightSphere->GetScaledSphereRadius();
+		if (SightSphere)
+		{
+			return d < SightSphere->GetScaledSphereRadius();
+		}
+		return false;
 	}
 
 	//checks if an object is within the monster's melee attack range. 
 	UFUNCTION(BlueprintCallable)
 	inline bool isInAttackRange (float d)
 	{
-		return d < AttackRangeSphere->GetScaledSphereRadius();
+		if (AttackRangeSphere)
+		{
+			return d < AttackRangeSphere->GetScaledSphereRadius();
+		}
+		return false;
 	}
 
 	//Checks if weapon is currently being swung
