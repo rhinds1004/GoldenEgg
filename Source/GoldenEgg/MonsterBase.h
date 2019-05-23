@@ -34,9 +34,13 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = MonsterProperties)
 		float Speed;
 	
-	//Monster's hitpoints
+	//Monster's current hitpoints
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = MonsterProperties)
-		float HitPoints;
+		float CurrentHP;
+
+	//Monster's max hitpoints
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = MonsterProperties)
+		float MaxHP;
 
 	//Experience gained for defeating the monster
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = MonsterProperties)
@@ -92,6 +96,9 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, Category = "AI")
 		class UBehaviorTree* BehaviorTree;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = MonsterProperties)
+		bool IsDead;
 
 	//checkss if an object is within in the monster's sight sphere. 
 	UFUNCTION(BlueprintCallable)

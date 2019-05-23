@@ -18,7 +18,8 @@ AMonsterBase::AMonsterBase(const FObjectInitializer& ObjectInitializer) : Super(
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 	Speed = 20;
-	HitPoints = 20;
+	MaxHP = 20;
+	CurrentHP = MaxHP;
 	Experience = 0;
 	BPLoot = NULL;
 	BaseAttackDamage = 1;
@@ -189,7 +190,15 @@ float AMonsterBase::TakeDamage(float Damage, FDamageEvent const & DamageEvent, A
 	*/
 	if (ActualDamage > 0.f)
 	{
-		HitPoints -= ActualDamage;
+		CurrentHP -= ActualDamage;
+		if (CurrentHP <= 0.f)
+		{
+			IsDead = true;
+		}
+		else
+		{
+			IsDead = false;
+		}
 	}
 	return AActor::TakeDamage(Damage, DamageEvent, EventInstigator, DamageCauser);
 }

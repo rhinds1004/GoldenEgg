@@ -26,6 +26,7 @@ public:
 	void StartFollowingPlayer();
 	void SetFollowRange(bool val);
 	void SetAttackRange(bool val);
+	void GetDead();
 /*	void SetTimeSinceLastStrike(float val);
 	void SetAttackTimeout(float val);
 	float GetTimeSinceLastStrike();
