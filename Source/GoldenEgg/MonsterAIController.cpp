@@ -54,9 +54,9 @@ void AMonsterAIController::SetAttackRange(bool val)
 	BlackboardCmp->SetValueAsBool("IsInAttackRange", val);  //Needs to be the same as the key found in the blueprint of the blackboard
 }
 
-void AMonsterAIController::GetDead()
+void AMonsterAIController::SetDead(bool val)
 {
-	AMonsterBase* Monster = Cast<AMonsterBase>(GetOwner());
+	AMonsterBase* Monster = Cast<AMonsterBase>(GetPawn());
 	if (Monster)
 	{
 		BlackboardCmp->SetValueAsBool("IsDead", Monster->IsDead);  //Needs to be the same as the key found in the blueprint of the blackboard

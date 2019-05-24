@@ -51,57 +51,70 @@ void AMonsterBase::Tick(float DeltaTime)
 	float distanceToPlayer = toPlayer.Size();
 	AMonsterAIController* controller = Cast<AMonsterAIController>(GetController());
 
-	if (distanceToPlayer > SightSphere->GetScaledSphereRadius())
-	{
-		//If the player is out of sight, then enemy cannot chase
-		if (controller != nullptr)
+		if (distanceToPlayer > SightSphere->GetScaledSphereRadius())
 		{
-			controller->SetAttackRange(false);
-			controller->SetFollowRange(false);
+			//If the player is out of sight, then enemy cannot chase
+			if (controller != nullptr)
+			{
+				controller->SetAttackRange(false);
+				controller->SetFollowRange(false);
+			}
+			return;
 		}
-		return;
-	}
-	toPlayer /= distanceToPlayer; // normalizes the vector
+		toPlayer /= distanceToPlayer; // normalizes the vector
 
-	//Get the rotator that looks in the 'toPlayer' direction
-	FRotator toPlayerRotation = toPlayer.ToOrientationRotator();
-	toPlayerRotation.Pitch = 0; //o off the pitch
-	RootComponent->SetWorldRotation(toPlayerRotation);
+		//Get the rotator that looks in the 'toPlayer' direction
+		FRotator toPlayerRotation = toPlayer.ToOrientationRotator();
+		toPlayerRotation.Pitch = 0; //o off the pitch
+		RootComponent->SetWorldRotation(toPlayerRotation);
 
-	if (isInAttackRange(distanceToPlayer))
+		if (isInAttackRange(distanceToPlayer))
+		{
+			if (controller != nullptr)
+			{
+				controller->SetAttackRange(true);
+			}
+
+			//Perform the attack
+			if (!TimeSinceLastStrike)
+			{
+				Attack(avatar);
+			}
+			TimeSinceLastStrike += DeltaTime;
+			if (TimeSinceLastStrike > AttackTimeout)
+			{
+				TimeSinceLastStrike = 0;
+			}
+			/*		controller->SetTimeSinceLastStrike(controller->GetTimeSinceLastStrike() + DeltaTime);
+					if (controller->GetTimeSinceLastStrike() > controller->GetAttackTimeout())
+					{
+						controller->SetTimeSinceLastStrike(0);
+					}
+					*/
+			return;
+		}
+		else
+		{
+			if (GetController() != nullptr)
+			{
+				controller->SetAttackRange(false);
+				controller->SetFollowRange(true);
+				//Cast<AMonsterAIController>(GetController())->StartFollowingPlayer();
+			}
+		}
+		//AMonsterAIController* controller = Cast<AMonsterAIController>(GetController());
+	//	controller->SetDead(IsDead);
+/*	if (IsDead)
 	{
-		if (controller != nullptr)
-		{
-			controller->SetAttackRange(true);
-		}
-		
-		//Perform the attack
-		if (!TimeSinceLastStrike)
-		{
-			Attack(avatar);
-		}
-		TimeSinceLastStrike += DeltaTime;
-		if (TimeSinceLastStrike > AttackTimeout)
-		{
-			TimeSinceLastStrike = 0;
-		}
-/*		controller->SetTimeSinceLastStrike(controller->GetTimeSinceLastStrike() + DeltaTime);
-		if (controller->GetTimeSinceLastStrike() > controller->GetAttackTimeout())
-		{
-			controller->SetTimeSinceLastStrike(0);
-		}
-		*/
-		return;
+		controller->SetDead(true);
 	}
 	else
 	{
-		if (GetController() != nullptr)
-		{
-			controller->SetAttackRange(false);
-			controller->SetFollowRange(true);
-			//Cast<AMonsterAIController>(GetController())->StartFollowingPlayer();
-		}
+		controller->SetDead(false);
+	//	IsDead = false;
 	}
+*/	
+	
 }
 
 // Called to bind functionality to input
@@ -194,11 +207,18 @@ float AMonsterBase::TakeDamage(float Damage, FDamageEvent const & DamageEvent, A
 		if (CurrentHP <= 0.f)
 		{
 			IsDead = true;
+		//	AMonsterAIController* controller = Cast<AMonsterAIController>(GetController());
+		//	controller->SetDead(true);
+			
 		}
 		else
 		{
 			IsDead = false;
+		//	AMonsterAIController* controller = Cast<AMonsterAIController>(GetController());
+		//	controller->SetDead(false);
 		}
+		AMonsterAIController* controller = Cast<AMonsterAIController>(GetController());
+		controller->SetDead(IsDead);
 	}
 	return AActor::TakeDamage(Damage, DamageEvent, EventInstigator, DamageCauser);
 }
