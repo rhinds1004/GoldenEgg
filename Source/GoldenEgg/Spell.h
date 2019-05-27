@@ -34,10 +34,14 @@ public:
 	float TimeAlive;
 
 	//caster of the spell
+	
 	AActor* Caster;
 
 	//Parents this spell to a caster actor
 	void SetCaster(AActor* caster);
+
+	UFUNCTION(BlueprintCallable, Category = Spell)
+	AActor* GetCaster();
 
 protected:
 	// Called when the game starts or when spawned

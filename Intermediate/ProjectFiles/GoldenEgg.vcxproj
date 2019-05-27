@@ -262,6 +262,8 @@
 		<None Include="..\..\Config\DefaultEngine.ini" />
 		<None Include="..\..\Config\DefaultGame.ini" />
 		<None Include="..\..\Config\DefaultInput.ini" />
+		<ClCompile Include="..\..\Source\GoldenEgg\ASpellForceField.cpp" />
+		<ClInclude Include="..\..\Source\GoldenEgg\ASpellForceField.h" />
 		<ClCompile Include="..\..\Source\GoldenEgg\Avatar.cpp" />
 		<ClInclude Include="..\..\Source\GoldenEgg\Avatar.h" />
 		<ClCompile Include="..\..\Source\GoldenEgg\BTTask_Attack.cpp" />
