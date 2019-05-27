@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "Spell.h"
-#include "Components/SphereComponent.h"
 #include "ASpellForceField.generated.h"
 
 /**
@@ -18,7 +17,7 @@ public:
 		AASpellForceField(const FObjectInitializer& ObjectInitializer);
 
 		UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = Collision)
-		USphereComponent* BoundSphere;
+		class USphereComponent* BoundSphere;
 
 		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Collision)
 			float ExpandBy;

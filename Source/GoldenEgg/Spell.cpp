@@ -15,7 +15,7 @@ ASpell::ASpell(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitia
 	// If it were the other way around, scaling the ProxBox
 	// would also scale the Particles, which we don't want
 	RootComponent = Particles;
-
+	ProxBox->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepWorldTransform);
 
 	Duration = 3.f;
 	DamagePerSecond = 1.f;
@@ -32,7 +32,7 @@ ASpell::ASpell(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitia
 void ASpell::BeginPlay()
 {
 	Super::BeginPlay();
-	ProxBox->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepWorldTransform);
+
 	
 }
 

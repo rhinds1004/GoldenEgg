@@ -34,7 +34,6 @@ public:
 	float TimeAlive;
 
 	//caster of the spell
-	
 	AActor* Caster;
 
 	//Parents this spell to a caster actor

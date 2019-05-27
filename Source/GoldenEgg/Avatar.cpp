@@ -135,17 +135,14 @@ void AAvatar::MouseClicked()
 
 void AAvatar::MouseRightClicked()
 {
-	
 		APlayerController* PController = GetWorld()->GetFirstPlayerController();
 		AMyHUD* hud = Cast<AMyHUD>(PController->GetHUD());
 		hud->MouseRightClicked();
-	
 }
 
 
 float AAvatar::GetCurrentHp()
 {
-	
 	return currentHP;
 }
 
@@ -160,10 +157,8 @@ float AAvatar::GetMaxHp()
 */
 void AAvatar::PickUp(APickUpItem* item)
 {
-	
 	myInventory->AddInventoryItem(item);
 	Spells.Add(item->Name, item->Spell);
-
 	//TODO having inventory open and picking up spells breaks being able to cast them until inventory is closed then reopened.
 	//need to fix.
 	if (myInventory->inventoryShowing)
@@ -179,11 +174,9 @@ void AAvatar::PickUp(APickUpItem* item)
 			hud->addWidget(Widget(Icon(fs, tex)));
 		}
 	}
-//	Spells.Add(item->Name, item->Spell);
 }
 
 /*Toggles if the player's inventory is to be displayed or not. */
-
 void AAvatar::ToggleInventory()
 {
 	if (GEngine)
