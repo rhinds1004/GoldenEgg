@@ -22,7 +22,9 @@ public:
 		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Collision)
 			float ExpandBy;
 
-		
+		UPROPERTY()
+		float PreviousRadius;
+
 		virtual void Tick(float DeltaTime) override;
 		virtual void BeginPlay() override;
 	
