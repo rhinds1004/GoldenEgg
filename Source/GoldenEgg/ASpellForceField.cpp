@@ -4,6 +4,8 @@
 #include "Components/SphereComponent.h"
 #include "MonsterBase.h"
 
+//TODO add a clamp so the radius can only get so big, but the duration can keep increasing.
+
 
 AASpellForceField::AASpellForceField(const FObjectInitializer & ObjectInitializer) : Super(ObjectInitializer)
 {	
@@ -27,13 +29,22 @@ void AASpellForceField::Tick(float DeltaTime)
 	{
 		if (AMonsterBase* monster = Cast<AMonsterBase>(OverlapActors[i]))
 		{
-			//FVector knockback = monster->GetActorLocation() - BoundSphere->GetComponentLocation();
-			//knockback.Normalize();
-			//knockback *= 1 * 1500;
 			float diff = BoundSphere->GetUnscaledSphereRadius() - PreviousRadius;
 			//monster->AddActorLocalOffset(FVector(diff * 150, diff * 15, 0)); // spins avvatar and mosnter around each other
-			monster->AddActorWorldOffset(FVector(diff * 10, 0, 0)); //TODO pushes but only pushes in +x direction. 
-			//monster->AddMovementInput(, 1, true);
+
+			FVector monsterFwdVector = monster->GetActorForwardVector();
+			monsterFwdVector.Normalize();
+			FVector casterFwdVector = Caster->GetActorForwardVector();
+			casterFwdVector.Normalize();
+			float dotProdResult = FVector::DotProduct(casterFwdVector, monsterFwdVector);
+			if (dotProdResult < 0) // ensures monster is pushed away even if not facing caster.
+			{
+				monsterFwdVector.X *= -1;
+				monsterFwdVector.Y *= -1;
+				monsterFwdVector.Z *= -1;
+			}
+			monster->AddActorWorldOffset(FVector(monsterFwdVector.X * diff * 5, monsterFwdVector.Y * diff * 5, monsterFwdVector.Z * diff * 5)); //TODO pushes but only pushes in +x direction. 
+			
 		}
 	}
 	
